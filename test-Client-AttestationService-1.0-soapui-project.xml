@@ -1,0 +1,829 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="161182c4-06ea-40eb-9489-ddfb560e395d" activeEnvironment="Default" name="Client-AttestationService-1.0-soapui-project" resourceRoot="" soapui-version="5.1.3" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="7d4a3825-20ca-430b-b80d-1617ba92d2c4" wsaVersion="NONE" name="AttestationServiceHTTPBinding" type="wsdl" bindingName="{http://fidus.brussels/service/attestationservice/v1}AttestationServiceHTTPBinding" soapVersion="1_1" anonymous="optional" definition="file:/home/ebarbieux/Dev/fidus/attestationservice/AttestationServiceGateway/src/main/resources/wsdl/attestationService/1.0.0/AttestationService_v1.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/home/ebarbieux/Dev/fidus/attestationservice/AttestationServiceGateway/src/main/resources/wsdl/attestationService/1.0.0/AttestationService_v1.wsdl"><con:part><con:url>file:/home/ebarbieux/Dev/fidus/attestationservice/AttestationServiceGateway/src/main/resources/wsdl/attestationService/1.0.0/AttestationService_v1.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://fidus.brussels/service/attestationservice/v1" name="AttestationService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:mes="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:tns="http://fidus.brussels/service/attestationservice/v1">
+  <xsd:annotation>
+    <xsd:documentation>AttestationService WDSL v1.</xsd:documentation>
+  </xsd:annotation>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://fidus.brussels/service/attestationservice/v1" elementFormDefault="qualified">
+      <xsd:import namespace="http://fidus.brussels/service/attestationservice/messages/v1" schemaLocation="messages/attestationServiceMessages_v1.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getCertificateRequestMessage">
+    <wsdl:part name="GetCertificateRequest" element="mes:getCertificateRequest"/>
+  </wsdl:message>
+  <wsdl:message name="getCertificateResponseMessage">
+    <wsdl:part name="GetCertificateResponse" element="mes:getCertificateResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="AttestationServicePortType">
+    <wsdl:operation name="getCertificate">
+      <wsdl:input message="tns:getCertificateRequestMessage"/>
+      <wsdl:output message="tns:getCertificateResponseMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="AttestationServiceHTTPBinding" type="tns:AttestationServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getCertificate">
+      <soap:operation soapAction="http://fidus.brussels/services/attestationservice/getCertificate"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AttestationService_v1">
+    <wsdl:port name="AttestationService_v1" binding="tns:AttestationServiceHTTPBinding">
+      <soap:address location="http://fidus.brussels/services/attestationservice/v1"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>file:/home/ebarbieux/Dev/fidus/attestationservice/AttestationServiceGateway/src/main/resources/wsdl/attestationService/1.0.0/messages/attestationServiceMessages_v1.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://fidus.brussels/service/attestationservice/messages/v1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:cme="http://fidus.brussels/type/common/messages/v1" xmlns:exc="http://fidus.brussels/type/common/exceptions/v1" xmlns:tns="http://fidus.brussels/service/attestationservice/messages/v1">
+  <xsd:import namespace="http://fidus.brussels/type/common/messages/v1" schemaLocation="baseMessageTypes_v1.xsd"/>
+  <xsd:import namespace="http://fidus.brussels/type/common/exceptions/v1" schemaLocation="exceptionTypes_v1.xsd"/>
+  <xsd:complexType name="CertificateRequestType">
+    <xsd:annotation>
+      <xsd:documentation>The person whose information is requested.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="certificateType" type="tns:certificateTypeType"/>
+      <xsd:element name="personNumber" type="cme:PersonNumberType" nillable="true">
+        <xsd:annotation>
+          <xsd:documentation>The basic identifier of a person is his personNumber.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="language" type="tns:languageType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="languageType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="F"/>
+      <xsd:enumeration value="N"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="certificateTypeType">
+    <xsd:restriction base="xsd:integer">
+      <xsd:pattern value="[0-9][0-9]"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!--Request getAttestationService definition-->
+  <xsd:complexType name="GetCertificateRequestType">
+    <xsd:sequence>
+      <xsd:element name="messageContext" type="cme:RequestMessageContextType"/>
+      <xsd:element name="legalContext" type="cme:LegalContextType"/>
+      <xsd:element name="request" type="tns:CertificateRequestType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--Request getAttestationService definition-->
+  <xsd:complexType name="GetCertificateResponseType">
+    <xsd:sequence>
+      <xsd:element name="messageContext" type="cme:ResponseMessageContextType"/>
+      <xsd:element name="responses" type="tns:ResponsesType" minOccurs="0"/>
+      <xsd:element name="exceptions" type="exc:ExceptionsType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Technical errors that occur when processing the message context e.g. insufficient rights.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ResponsesType">
+    <xsd:sequence>
+      <xsd:element name="response" type="tns:ResponseType" minOccurs="1" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ResponseType">
+    <xsd:sequence>
+      <!--TODO:  insert response element here of required provider type-->
+      <!--Example: <xsd:element name="person" type="per:PersonResponseType" minOccurs="0" maxOccurs="unbounded"/>-->
+      <xsd:element name="exceptions" type="exc:ExceptionsType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Business exceptions that occur when processing the request or response e.g. missing data for a single response element.
+						Exceptions at this level may contain back-end specific codes and content.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--Element of the request and the response-->
+  <xsd:element name="getCertificateRequest" type="tns:GetCertificateRequestType"/>
+  <xsd:element name="getCertificateResponse" type="tns:GetCertificateResponseType"/>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:/home/ebarbieux/Dev/fidus/attestationservice/AttestationServiceGateway/src/main/resources/wsdl/attestationService/1.0.0/messages/baseMessageTypes_v1.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://fidus.brussels/type/common/messages/v1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:cmn="http://fidus.brussels/type/common/v1" xmlns:tns="http://fidus.brussels/type/common/messages/v1">
+  <!--Unformatted message Id-->
+  <xsd:simpleType name="MessageIdType">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1"/>
+      <xsd:maxLength value="64"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!--National Number of the person. Format depending on the Register-->
+  <xsd:simpleType name="PersonNumberType">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="[0-9][0-9](([0][0-9])|([1][0-2]))(([0-2][0-9])|([3][0-1]))(([0-9]{2}[1-9])|([0-9][1-9][0-9])|([1-9][0-9]{2}))(([0-8][0-9])|([9][0-7]))">
+        <xsd:annotation>
+          <xsd:documentation>National Register format</xsd:documentation>
+        </xsd:annotation>
+      </xsd:pattern>
+      <xsd:pattern value="[0-9][0-9](([2][0-9])|([3][0-2]))(([0-2][0-9])|([3][0-1]))[0-9]{3}(([0-8][0-9])|([9][0-7]))">
+        <xsd:annotation>
+          <xsd:documentation>CBSS Register format: Bis Register</xsd:documentation>
+        </xsd:annotation>
+      </xsd:pattern>
+      <xsd:pattern value="[0-9][0-9](([4][0-9])|([5][0-2]))(([0-2][0-9])|([3][0-1]))[0-9]{3}(([0-8][0-9])|([9][0-7]))">
+        <xsd:annotation>
+          <xsd:documentation>CBSS Register format: Ter Register</xsd:documentation>
+        </xsd:annotation>
+      </xsd:pattern>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!--Request message context-->
+  <xsd:complexType name="RequestMessageContextType">
+    <xsd:annotation>
+      <xsd:documentation>Message context block generated by the consumer.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="messageId" type="tns:MessageIdType">
+        <xsd:annotation>
+          <xsd:documentation>Consumer must assign their own MessageId reference for the request.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="timestamp" type="xsd:dateTime" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Timestamp when client sent request.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--Response message context-->
+  <xsd:complexType name="ResponseMessageContextType">
+    <xsd:annotation>
+      <xsd:documentation>MessageContext block generated by fidus.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="messageId" type="tns:MessageIdType">
+        <xsd:annotation>
+          <xsd:documentation>A unique identifier generated by fidus.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="transactionId" type="tns:MessageIdType">
+        <xsd:annotation>
+          <xsd:documentation>A unique ID returned to the client for tracing purposes.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="relatesTo" type="tns:MessageIdType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Optional field. The unique id of a previous batch file in this exchange Only used for responses.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="timestamp" type="xsd:dateTime" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Time reply sent by fidus.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--Legal Context : the finality of the Privacy Commission-->
+  <xsd:simpleType name="LegalContextType">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1"/>
+      <xsd:maxLength value="64"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="UserContextType">
+    <xsd:annotation>
+      <xsd:documentation>The user context defines information regarding the actual user performing a request.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="language" type="xsd:language" nillable="true">
+        <xsd:annotation>
+          <xsd:documentation>The preferred language of the actual user performing the request.
+						This influences the language in which response elements are cast.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:/home/ebarbieux/Dev/fidus/attestationservice/AttestationServiceGateway/src/main/resources/wsdl/attestationService/1.0.0/messages/exceptionTypes_v1.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://fidus.brussels/type/common/exceptions/v1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://fidus.brussels/type/common/exceptions/v1">
+  <!--Basic error typed-->
+  <xsd:complexType name="ExceptionsType">
+    <xsd:sequence>
+      <xsd:element name="exception" type="tns:ExceptionType" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ExceptionType">
+    <xsd:sequence>
+      <xsd:element name="type" type="tns:ExceptionClassType"/>
+      <xsd:element name="code" type="tns:ExceptionCodeType"/>
+      <xsd:element name="source" type="tns:ExceptionSourceType"/>
+      <xsd:element name="description" type="tns:ExceptionDescriptionType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="ExceptionClassType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="ERROR"/>
+      <xsd:enumeration value="WARNING"/>
+      <xsd:enumeration value="INFO"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="ExceptionCodeType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="20"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="ExceptionSourceType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="20"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="ExceptionDescriptionType">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://fidus.brussels/services/attestationservice/v1</con:endpoint></con:endpoints><con:operation id="f7f3133d-6f7b-4be4-a353-dfd84f4030e7" isOneWay="false" action="http://fidus.brussels/services/attestationservice/getCertificate" name="getCertificate" bindingOperationName="getCertificate" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f94e48f6-f210-4aac-aad1-804544073986" name="01 - Local - Request" outgoingWss="outgoing DEV" sslKeystore="" incomingWss="Inflow DEV"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://localhost:8243/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>63110606588</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/attestationservice/getCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="b24e7ddd-ce40-4b6c-8b7a-53941b1d4988" name="02 - Dev - Request" outgoingWss="outgoing DEV" incomingWss="Inflow DEV" sslKeystore=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.36.61:8243/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>63110606588</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/attestationservice/getCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="83010c26-dc2b-483a-a8fa-83bb09ffce95" name="03 - Test - External - Request" outgoingWss="outgoing TEST" incomingWss="Inflow TEST"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus-test.irisnetlab.be/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>63110606588</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/attestationservice/getCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="f737c198-3597-442a-b17c-fc9b625d9db2" name="03 - Test - Worker1 - Request" outgoingWss="outgoing TEST" incomingWss="Inflow TEST"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.22.53:8443/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>63110606588</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/attestationservice/getCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="bd371504-7ae0-4f8e-8933-da8044fa876f" name="03 - Test - Worker2 - Request" outgoingWss="outgoing TEST" incomingWss="Inflow TEST"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.22.54:8443/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>63110606588</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/attestationservice/getCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="ea188465-d488-4c37-a7f3-10fda0e2808c" name="03 - Test - LB - Request" outgoingWss="outgoing TEST" incomingWss="Inflow TEST"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://esb-security-gw.sta.srv.cirb.lan:8443/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>63110606588</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/attestationservice/getCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="1c2a320e-aa1e-44c9-b679-b03a45760f0a" name="04 - Staging - External - Request" outgoingWss="outgoing STA" incomingWss="Inflow STAG"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus.irisnetlab.be/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>63110606588</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/attestationservice/getCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="cfeb70c9-f3dd-4fe2-913c-06c99e996bd1" name="04 - Staging - LB - Request" outgoingWss="outgoing STA" incomingWss="Inflow STAG"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus-esb-sg.sta.srv.cirb.lan:8443/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>63110606588</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/attestationservice/getCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="9e32b150-6746-4f60-83ca-8be410c0f807" name="04 - Staging - Worker1 - Request" outgoingWss="outgoing STA" incomingWss="Inflow STAG"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.16:8443/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>63110606588</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/attestationservice/getCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="dff6dd1b-a1e2-4f7c-af47-e14363a71011" name="04 - Staging - Worker2 - Request" outgoingWss="outgoing STA" incomingWss="Inflow STAG"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.17:8443/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>63110606588</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/attestationservice/getCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="c72057c2-988a-4d2e-99f9-f8850a66360a" name="05 - Prod - External - Request" outgoingWss="outgoing PRD" incomingWss="Inflow PROD"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus.sec.brussels/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>38</v1:certificateType>
+            <v1:personNumber>61040500587</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/attestationservice/getCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="2628323a-6484-43b1-93b4-537a5f338fdd" name="05 - Prod - LB - Request" outgoingWss="outgoing PRD" incomingWss="Inflow PROD"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus-esb-sg.prd.srv.cirb.lan:8443/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>61040500587</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/attestationservice/getCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="4af3b75b-dda4-4193-a3f4-c909cc21379e" name="05 - Prod - Worker1 - Request" outgoingWss="outgoing PRD" incomingWss="Inflow PROD"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.26.22:8443/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>61040500587</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/attestationservice/getCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="c2fc4826-a3f2-4d55-9b66-a45ea2206e35" name="05 - Prod - Worker2 - Request" outgoingWss="outgoing PRD" incomingWss="Inflow PROD"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.26.19:8443/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>61040500587</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/attestationservice/getCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="66e250f4-8d8d-410d-8827-641f71174159" name="02 - DevNew - Request" outgoingWss="outgoing DEV" incomingWss="Inflow DEV"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.36.205:8243/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>63110606588</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/attestationservice/getCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="874996b0-6372-4a6c-8346-297d495af19b" name="03 - Test - Worker1New - Request" outgoingWss="outgoing TEST" incomingWss="Inflow TEST"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.22.73:8443/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>63110606588</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/attestationservice/getCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="d0f22ecf-6dbb-4687-8823-19e5cca17e76" name="03 - Test - Worker2New - Request" outgoingWss="outgoing TEST" incomingWss="Inflow TEST"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.22.93:8443/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>63110606588</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/attestationservice/getCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="7705b5e6-659e-4a64-8d82-e60051e49290" name="04 - Staging - Worker1New - Request" outgoingWss="outgoing STA" incomingWss="Inflow STAG"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.23.191:8443/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>63110606588</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/attestationservice/getCertificate"/><con:wsrmConfig version="1.2"/></con:call><con:call id="4d5c4cb7-504a-4a15-84f9-89e18a5d2cc5" name="04 - Staging - Worker2New - Request" outgoingWss="outgoing STA" incomingWss="Inflow STAG"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.23.198:8443/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>63110606588</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/attestationservice/getCertificate"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="f11a72e6-bc8d-4ff8-af67-22ca2c5552c1" name="DEV"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="3905b804-08f0-42ad-ad81-80ed8bae417f" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getCertificate" searchProperties="true"><con:settings/><con:testStep type="request" id="23ccf9a5-eec0-4477-bcaa-d4c72ead8ca4" name="testcase02 - Dev - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AttestationServiceHTTPBinding</con:interface><con:operation>getCertificate</con:operation><con:request name="testcase02 - Dev - Request" id="99568046-3a8e-4750-84b6-0d593cfae71e" outgoingWss="Outflow DEV"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.36.61:8243/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>63110606588</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="6be6733a-96c0-416a-8fa7-b6b3423ca10f" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="114ce42a-d351-4f11-93ab-39faf485e9e2" name="SOAP Response"/><con:assertion type="Schema Compliance" id="2da439b0-2c9f-46b5-b5d8-4046354d79bb" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/attestationservice/getCertificate"/></con:request></con:config></con:testStep><con:testStep type="request" id="7cde1c59-eab2-4682-b27f-70aff87a0efa" name="testcase02 - DevNew - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AttestationServiceHTTPBinding</con:interface><con:operation>getCertificate</con:operation><con:request name="testcase02 - DevNew - Request" id="57716b07-8f81-48a4-aa29-0b58dbec3146" outgoingWss="Outflow DEV"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.36.205:8243/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>63110606588</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="f3f11cea-1d4f-4205-862f-0ebc4c20f151" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="1668d4f0-955f-466d-b93b-b8900c0adadf" name="SOAP Response"/><con:assertion type="Schema Compliance" id="644a4060-f1ff-4681-9a01-052429c9f7f9" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/attestationservice/getCertificate"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:testSuite id="4849a520-5a7f-4890-8eee-1dce2d572536" name="TEST"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="a3a8bd84-2da9-4522-8eae-5aa39fd8b554" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getCertificate" searchProperties="true"><con:settings/><con:testStep type="request" id="1390f84a-3aa1-469f-a123-43bf9ce489f9" name="testcase03 - Test - External - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AttestationServiceHTTPBinding</con:interface><con:operation>getCertificate</con:operation><con:request name="testcase03 - Test - External - Request" id="391a1d10-db81-47bc-8d94-7e6853ebfbdd" outgoingWss="Outflow TEST"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus-test.irisnetlab.be/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>63110606588</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="0ce4afa5-b940-43f6-93f4-f5dda600f053" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="2b1df190-f6d6-497e-8dd7-071efde25b5c" name="SOAP Response"/><con:assertion type="Schema Compliance" id="7871a4ff-211b-4c91-8b6e-75994d26e358" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/attestationservice/getCertificate"/></con:request></con:config></con:testStep><con:testStep type="request" id="b3b5f043-e1da-4228-be87-dd5aa9512fdc" name="testcase03 - Test - Worker1 - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AttestationServiceHTTPBinding</con:interface><con:operation>getCertificate</con:operation><con:request name="testcase03 - Test - Worker1 - Request" id="10e22be6-b96a-41fe-b49d-e410d3bcefa2" outgoingWss="Outflow TEST"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.45:8443/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>63110606588</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="4d981817-75d7-45d2-8fcc-25be61028b73" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="857a440c-42ba-4f7d-8863-a342addc5ca2" name="SOAP Response"/><con:assertion type="Schema Compliance" id="52d0b997-7bd6-4358-9409-caf50fc8ef1f" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/attestationservice/getCertificate"/></con:request></con:config></con:testStep><con:testStep type="request" id="d5700e21-a290-492d-805c-66af5e42b4ec" name="testcase03 - Test - Worker2 - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AttestationServiceHTTPBinding</con:interface><con:operation>getCertificate</con:operation><con:request name="testcase03 - Test - Worker2 - Request" id="e0bb9123-2274-4f33-8f98-679fda569d7e" outgoingWss="Outflow TEST"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.51:8443/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>63110606588</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="8054cd6b-3430-4e58-b789-f6320a8fe362" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="d4b17d4a-1a3d-4a41-af10-3e121769e3cb" name="SOAP Response"/><con:assertion type="Schema Compliance" id="caafd3d4-5892-469c-97bc-dd0eb4014eb6" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/attestationservice/getCertificate"/></con:request></con:config></con:testStep><con:testStep type="request" id="5e373ca4-fb8c-42bc-b71c-0ff51388b808" name="testcase03 - Test - LB - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AttestationServiceHTTPBinding</con:interface><con:operation>getCertificate</con:operation><con:request name="testcase03 - Test - LB - Request" id="1c3794a6-3c0d-47e5-9b23-a5423b5a2348" outgoingWss="Outflow TEST"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://esb-security-gw.sta.srv.cirb.lan:8443/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>63110606588</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="b8e0af7a-0173-40bf-8c1b-b7c7c624b893" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="e8a27155-ed5f-4595-8bd4-76a6d8115f6d" name="SOAP Response"/><con:assertion type="Schema Compliance" id="8e1ddaff-616c-4e33-a690-5c4d7bbd283c" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/attestationservice/getCertificate"/></con:request></con:config></con:testStep><con:testStep type="request" id="74550c46-3d9f-4c91-b27b-b0a2973c9084" name="testcase03 - Test - Worker1New - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AttestationServiceHTTPBinding</con:interface><con:operation>getCertificate</con:operation><con:request name="testcase03 - Test - Worker1New - Request" id="2bb99367-4c3a-498e-91d2-c4d327fd7b50" outgoingWss="Outflow TEST"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.45:8443/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>63110606588</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="cf49f5c7-8111-45b7-9ecd-b4a4428716e8" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="a6ae2dfb-90ae-47a3-94b6-7651987b6456" name="SOAP Response"/><con:assertion type="Schema Compliance" id="b1e4a07b-f0d0-4941-a2ad-3b494998fc5f" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/attestationservice/getCertificate"/></con:request></con:config></con:testStep><con:testStep type="request" id="48e12b62-9805-4322-a53a-f9ebac2f0d22" name="testcase03 - Test - Worker2New - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AttestationServiceHTTPBinding</con:interface><con:operation>getCertificate</con:operation><con:request name="testcase03 - Test - Worker2New - Request" id="416fbac4-e2dd-4c54-b5a2-9defb6efb90f" outgoingWss="Outflow TEST"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.51:8443/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>63110606588</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="fc3ea9a2-1ec5-4ceb-aa49-f5471eb89d99" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="8745803b-e943-4578-8e23-fefb98728437" name="SOAP Response"/><con:assertion type="Schema Compliance" id="5d8a56a4-c2ee-40bc-98f9-b835de2e7abe" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/attestationservice/getCertificate"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:testSuite id="42a4d4e6-6188-4ba0-928d-7bd3268ef843" name="STAG"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="b5b2ead9-14bf-4e40-a0a6-5487de978254" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getCertificate" searchProperties="true"><con:settings/><con:testStep type="request" id="07eb0219-eabe-4d31-8e37-8bbb856b02e5" name="testcase04 - Staging - External - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AttestationServiceHTTPBinding</con:interface><con:operation>getCertificate</con:operation><con:request name="testcase04 - Staging - External - Request" id="c10c808d-9e88-4b8a-8523-6fe66619842b" outgoingWss="Outflow STAG"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus.irisnetlab.be/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>63110606588</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="d451a25b-a739-45b8-836c-624c8d16df48" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="af8a66c4-7a1b-4060-ba18-4627bf291ebb" name="SOAP Response"/><con:assertion type="Schema Compliance" id="7a05221a-aba3-4676-8383-4ba375d51d66" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/attestationservice/getCertificate"/></con:request></con:config></con:testStep><con:testStep type="request" id="72c049bf-c0a3-450c-87d4-daaac83952fe" name="testcase04 - Staging - LB - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AttestationServiceHTTPBinding</con:interface><con:operation>getCertificate</con:operation><con:request name="testcase04 - Staging - LB - Request" id="2578bd54-2309-42fb-9373-3ec9dd5aac32" outgoingWss="Outflow STAG"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus-esb-sg.sta.srv.cirb.lan:8443/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>63110606588</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="bcb7d518-73c1-489e-80f6-628cc4fab815" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="500d9d19-2897-41cc-9afa-8b8fb80f4f8d" name="SOAP Response"/><con:assertion type="Schema Compliance" id="532989f0-1306-4f8d-a4cf-de1584102f6f" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/attestationservice/getCertificate"/></con:request></con:config></con:testStep><con:testStep type="request" id="bdd3a76e-09cf-420a-9d0a-1e86ddd04fa1" name="testcase04 - Staging - Worker1 - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AttestationServiceHTTPBinding</con:interface><con:operation>getCertificate</con:operation><con:request name="testcase04 - Staging - Worker1 - Request" id="8cec2596-d6e0-4ee9-8215-ef5902fecdf7" outgoingWss="Outflow STAG"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.57:8443/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>63110606588</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="85fc6709-dee0-427b-9d29-1b8b62ea835c" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="6d09117f-9767-41ce-88b6-9ece6ac44f61" name="SOAP Response"/><con:assertion type="Schema Compliance" id="90cd540a-8a77-422f-b5ac-a7853afb6df3" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/attestationservice/getCertificate"/></con:request></con:config></con:testStep><con:testStep type="request" id="ea71caaf-2410-436b-bb11-8e8830bb9b19" name="testcase04 - Staging - Worker2 - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AttestationServiceHTTPBinding</con:interface><con:operation>getCertificate</con:operation><con:request name="testcase04 - Staging - Worker2 - Request" id="db460e9a-3ad5-4dfc-9628-3c618c1679d5" outgoingWss="Outflow STAG"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.64:8443/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>63110606588</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="ee2b7867-736e-4b82-961a-ebc75cbd894d" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="3c91f454-ea1b-4659-8dd7-c6d02cd3d719" name="SOAP Response"/><con:assertion type="Schema Compliance" id="23d47329-e573-44ab-90ec-614e08d1d35b" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/attestationservice/getCertificate"/></con:request></con:config></con:testStep><con:testStep type="request" id="42fe5544-d7fe-4497-aa7e-62434c109ab9" name="testcase04 - Staging - Worker1New - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AttestationServiceHTTPBinding</con:interface><con:operation>getCertificate</con:operation><con:request name="testcase04 - Staging - Worker1New - Request" id="5cce714b-f406-459c-b729-46c30e74c948" outgoingWss="Outflow STAG"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.57:8443/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>63110606588</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="159de02b-4d03-4595-8cdf-1d4e6eedbb98" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="61f30bb5-3c61-4a8b-be79-bfb79d1493f0" name="SOAP Response"/><con:assertion type="Schema Compliance" id="146c6a54-9b62-4735-9648-91e4a97b498d" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/attestationservice/getCertificate"/></con:request></con:config></con:testStep><con:testStep type="request" id="f7a35ee4-f76a-4aa2-8d8a-a4403b6aed4d" name="testcase04 - Staging - Worker2New - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AttestationServiceHTTPBinding</con:interface><con:operation>getCertificate</con:operation><con:request name="testcase04 - Staging - Worker2New - Request" id="c1c1ecbf-3cf7-46ad-b20a-8357061e475c" outgoingWss="Outflow STAG"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.64:8443/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>63110606588</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="355b3b96-a059-4066-af19-1d7f1b6149ee" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="a7943c19-c2cb-4f43-a2ce-0a93e17a7ea7" name="SOAP Response"/><con:assertion type="Schema Compliance" id="6f4d259c-bfb8-435e-b8db-a90c1b54a97e" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/attestationservice/getCertificate"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:testSuite id="164e173d-78a6-408c-8a86-0eba64afcd59" name="PROD"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="29340ef8-63f2-4453-af0e-209eac79f17d" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getCertificate" searchProperties="true"><con:settings/><con:testStep type="request" id="441f8c54-b394-4c0f-9a59-328eb2ada6a8" name="testcase05 - Prod - External - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AttestationServiceHTTPBinding</con:interface><con:operation>getCertificate</con:operation><con:request name="testcase05 - Prod - External - Request" id="bfafe05d-e3cb-4055-8141-642a006a6d2d" outgoingWss="Outflow PROD"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus.sec.brussels/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>38</v1:certificateType>
+            <v1:personNumber>61040500587</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="433d7723-39a5-47af-8510-df864190ebe2" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="d069b665-da85-41a0-aa4f-f37e6a2751d9" name="SOAP Response"/><con:assertion type="Schema Compliance" id="f9818214-ad8c-4d9d-964f-301f141fd58f" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/attestationservice/getCertificate"/></con:request></con:config></con:testStep><con:testStep type="request" id="32c72020-6565-41dd-8d4a-d8b6a1dc60e5" name="testcase05 - Prod - LB - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AttestationServiceHTTPBinding</con:interface><con:operation>getCertificate</con:operation><con:request name="testcase05 - Prod - LB - Request" id="723d9073-fec9-49c1-ae4b-519765bd4167" outgoingWss="Outflow PROD"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus-esb-sg.prd.srv.cirb.lan:8443/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>61040500587</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="389c8c89-0dd1-4faa-b85f-d5a9b0c73b86" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="26c78bfc-1722-4706-afce-6ed685537ae4" name="SOAP Response"/><con:assertion type="Schema Compliance" id="efef3edb-1e57-42dc-9e8e-2d3dabc5a02c" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/attestationservice/getCertificate"/></con:request></con:config></con:testStep><con:testStep type="request" id="e74166a3-b983-4883-bfc1-a05b57651f6b" name="testcase05 - Prod - Worker1 - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AttestationServiceHTTPBinding</con:interface><con:operation>getCertificate</con:operation><con:request name="testcase05 - Prod - Worker1 - Request" id="fcf42f65-233a-4e45-905a-86f6990c714c" outgoingWss="Outflow PROD"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.26.22:8443/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>61040500587</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="97b516fb-5bdb-4685-8188-e35b67537e8e" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="4ca126a1-acef-4613-bcec-bb15c4e0c4c7" name="SOAP Response"/><con:assertion type="Schema Compliance" id="4031a1fa-96fd-4650-baaa-aaa48f2b8ce5" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/attestationservice/getCertificate"/></con:request></con:config></con:testStep><con:testStep type="request" id="c11eb060-a11b-4439-92f3-921edaf681d6" name="testcase05 - Prod - Worker2 - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>AttestationServiceHTTPBinding</con:interface><con:operation>getCertificate</con:operation><con:request name="testcase05 - Prod - Worker2 - Request" id="2194c6b7-987d-4568-aed0-46b27aa58443" outgoingWss="Outflow PROD"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.26.19:8443/services/AttestationService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/attestationservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getCertificateRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:certificateType>42</v1:certificateType>
+            <v1:personNumber>61040500587</v1:personNumber>
+            <v1:language>F</v1:language>
+         </v1:request>
+      </v1:getCertificateRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="2ec2ac3d-af7a-4998-922b-e3899e5b8e01" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="f2f19504-7c24-47cc-86fd-f75ecf70b3a1" name="SOAP Response"/><con:assertion type="Schema Compliance" id="bbed4343-647f-49da-bb5d-e1d1cdd84bce" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/attestationservice/getCertificate"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer><con:crypto><con:source>data/wso2/keystores/user-rajarshi.jks</con:source><con:password>test@fidus01</con:password><con:type>KEYSTORE</con:type></con:crypto><con:outgoing><con:name>Outflow DEV</con:name></con:outgoing><con:outgoing><con:name>Outflow TEST</con:name><con:entry type="Signature" username="testuser-test.fidus.brussels" password="test@fidus01"><con:configuration><crypto>user-rajarshi.jks</crypto><keyIdentifierType>3</keyIdentifierType><signatureAlgorithm/><signatureCanonicalization/><useSingleCert>true</useSingleCert><digestAlgorithm/><customTokenValueType/><customTokenId/></con:configuration></con:entry><con:entry type="Timestamp"><con:configuration><timeToLive>300000</timeToLive><strictTimestamp>true</strictTimestamp></con:configuration></con:entry></con:outgoing><con:outgoing><con:name>Outflow STAG</con:name></con:outgoing><con:outgoing><con:name>Outflow PROD</con:name></con:outgoing></con:wssContainer><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
