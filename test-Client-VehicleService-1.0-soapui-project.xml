@@ -1,0 +1,2837 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="2d65794a-e080-484f-a287-98c7e3b0cbb4" activeEnvironment="Default" name="Client-VehicleService-1.0-soapui-project" resourceRoot="" soapui-version="5.1.3" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings/>
+  <con:interface xsi:type="con:WsdlInterface" id="c7606967-424e-4242-afa5-5602719ce9a9" wsaVersion="NONE" name="VehicleServiceHTTPBinding" type="wsdl" bindingName="{http://fidus.brussels/service/vehicleservice/v1}VehicleServiceHTTPBinding" soapVersion="1_1" anonymous="optional" definition="/home/isr/git/parent/vehicleservice_1.0/VehicleServiceGateway/src/main/resources/wsdl/vehicleService/1.0.0/VehicleService_v1.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <con:settings/>
+    
+    <con:definitionCache type="TEXT" rootPart="file:/home/isr/git/parent/vehicleservice_1.0/VehicleServiceGateway/src/main/resources/wsdl/vehicleService/1.0.0/VehicleService_v1.wsdl"><con:part><con:url>file:/home/isr/git/parent/vehicleservice_1.0/VehicleServiceGateway/src/main/resources/wsdl/vehicleService/1.0.0/VehicleService_v1.wsdl</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://fidus.brussels/service/vehicleservice/v1" name="VehicleService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:mes="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:tns="http://fidus.brussels/service/vehicleservice/v1">
+  <xsd:annotation>
+    <xsd:documentation>Vehicle service WDSL v1.</xsd:documentation>
+  </xsd:annotation>
+  <wsdl:types>
+    <xsd:schema>
+      <xsd:import namespace="http://fidus.brussels/service/vehicleservice/messages/v1" schemaLocation="messages/vehicleServiceMessages_v1.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="getVehicleTitularRequestMessage">
+    <wsdl:part name="GetVehicleTitularRequest" element="mes:getVehicleTitularRequest"/>
+  </wsdl:message>
+  <wsdl:message name="getVehicleTitularResponseMessage">
+    <wsdl:part name="GetVehicleTitularResponse" element="mes:getVehicleTitularResponse"/>
+  </wsdl:message>
+  <wsdl:message name="getVehicleRegistrationRequestMessage">
+    <wsdl:part name="GetVehicleRegistrationRequest" element="mes:getVehicleRegistrationRequest"/>
+  </wsdl:message>
+  <wsdl:message name="getVehicleRegistrationResponseMessage">
+    <wsdl:part name="GetVehicleRegistrationResponse" element="mes:getVehicleRegistrationResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="VehicleServicePortType">
+    <wsdl:operation name="getVehicleTitular">
+      <wsdl:input message="tns:getVehicleTitularRequestMessage"/>
+      <wsdl:output message="tns:getVehicleTitularResponseMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="getVehicleRegistration">
+      <wsdl:input message="tns:getVehicleRegistrationRequestMessage"/>
+      <wsdl:output message="tns:getVehicleRegistrationResponseMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="VehicleServiceHTTPBinding" type="tns:VehicleServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getVehicleTitular">
+      <soap:operation soapAction="http://fidus.brussels/services/vehicleservice/getVehicleTitular"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getVehicleRegistration">
+      <soap:operation soapAction="http://fidus.brussels/services/vehicleservice/getVehicleRegistration"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="VehicleService_v1">
+    <wsdl:port name="VehicleService_v1" binding="tns:VehicleServiceHTTPBinding">
+      <soap:address location="http://fidus.brussels/services/vehicleservice/v1"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>file:/home/isr/git/parent/vehicleservice_1.0/VehicleServiceGateway/src/main/resources/wsdl/vehicleService/1.0.0/messages/vehicleServiceMessages_v1.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://fidus.brussels/service/vehicleservice/messages/v1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:cme="http://fidus.brussels/type/common/messages/v1" xmlns:exc="http://fidus.brussels/type/common/exceptions/v1" xmlns:tns="http://fidus.brussels/service/vehicleservice/messages/v1">
+  <xsd:import namespace="http://fidus.brussels/type/common/messages/v1" schemaLocation="baseMessageTypes_v1.xsd"/>
+  <xsd:import namespace="http://fidus.brussels/type/common/exceptions/v1" schemaLocation="exceptionTypes_v1.xsd"/>
+  <xsd:complexType name="vehicleTitularRequestType">
+    <xsd:annotation>
+      <xsd:documentation>The vehicle whose information is requested.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="PlateNr" form="unqualified">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">License plate number</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="10"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Vin" form="unqualified">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">Vehicle Identification Number or Chassisnumber</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="17"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Unifier" form="unqualified">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">A code to make a unique VIN number</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="2"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="LanguageCode" form="unqualified">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">Language of the CIM: 1 (Francais), 2 (Nederlands) or 3 (Deutsch)</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:integer">
+            <xsd:totalDigits value="1"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="IncidentDate" form="unqualified">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:integer">
+            <xsd:totalDigits value="8"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--Request getIdentity definition-->
+  <xsd:complexType name="GetVehicleTitularRequestType">
+    <xsd:sequence>
+      <xsd:element name="messageContext" type="cme:RequestMessageContextType"/>
+      <xsd:element name="legalContext" type="cme:LegalContextType"/>
+      <xsd:element name="consumerContext" type="cme:ConsumerContextType"/>
+      <xsd:element name="request" type="tns:vehicleTitularRequestType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--Request getIdentity definition-->
+  <xsd:complexType name="GetVehicleTitularResponseType">
+    <xsd:sequence>
+      <xsd:element name="messageContext" type="cme:ResponseMessageContextType"/>
+      <xsd:element name="responses" type="tns:VehicleTitularResponsesType" minOccurs="0"/>
+      <xsd:element name="exceptions" type="exc:ExceptionsType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Technical errors that occur when processing the message context e.g. insufficient rights.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="VehicleTitularResponsesType">
+    <xsd:sequence>
+      <xsd:element name="response" type="tns:VehicleTitularResponseType" minOccurs="1" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="VehicleTitularResponseType">
+    <xsd:sequence>
+      <xsd:element name="ExportIKeys" form="unqualified">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="PlateNr" form="unqualified">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="en">License plate number</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="10"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="Vin" form="unqualified">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="en">Vehicle Identification Number or Chassisnumber</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="17"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="Unifier" form="unqualified">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="en">A code to make a unique VIN number</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="2"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="LanguageCode" form="unqualified">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="en">Language of the CIM: 1 (Francais), 2 (Nederlands) or 3 (Deutsch)</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:integer">
+                  <xsd:totalDigits value="1"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="IncidentDate" form="unqualified">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:integer">
+                  <xsd:totalDigits value="8"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ExportIMessage" form="unqualified">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Code" form="unqualified">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="en">An error code</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="7"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="Label" form="unqualified">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="en">The error code description</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="255"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ExportITitular" form="unqualified">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="NationalId" form="unqualified">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="en">A person his/her national ID</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="11"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="LastName" form="unqualified">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="en">Lastname in case of a physical person or a companyname in case of a moral person</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="160"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="FirstName1" form="unqualified">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="en">First forename</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="50"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="FirstName2" form="unqualified">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="en">Second forename</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="50"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="FirstName3" form="unqualified">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="en">Third forename</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="50"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="StreetName" form="unqualified">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="en">Name of the street</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="100"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="HouseNr" form="unqualified">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="en">The house number in the street</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="11"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="BoxNr" form="unqualified">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="en">The box number at the specific streetname and house_nr</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="11"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="PostalCode" form="unqualified">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="4"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="CityName" form="unqualified">
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="100"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="NisNr" form="unqualified">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="en">Nis number, code given by the National Institute of Statistics</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="5"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="CompanyNr" form="unqualified">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="en">The CBE number of the company</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="10"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ExportIRegistration" form="unqualified" minOccurs="0">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="StatusCode" form="unqualified">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="en">Status code of a registration</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="3"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="StatusLabel" form="unqualified">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="en">Omschrijving van de status</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="30"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="StartSituationDate" form="unqualified">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="en">The date when the status was accorded to this registration</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:integer">
+                  <xsd:totalDigits value="8"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="LanguageCode" form="unqualified">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="en">Certificate language: 1 (Francais), 2 (Nederlands) or 3 (Deutsch)</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:integer">
+                  <xsd:totalDigits value="1"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ExportIVehicle" form="unqualified">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Vin" form="unqualified">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="en">Vehicle Identification Number or Chassisnumber</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="17"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="Unifier" form="unqualified">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="en">A code to make a unique VIN number</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="2"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="CommercialName" form="unqualified">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="en">Commercial name of vehicle (CoC 2.0.1)</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="60"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="vehicleRegistrationRequestType">
+    <xsd:annotation>
+      <xsd:documentation>The vehicle whose information is requested.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="PlateNr" form="unqualified">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">License plate number</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="10"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Vin" form="unqualified">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">Vehicle Identification Number or Chassisnumber</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="17"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="Unifier" form="unqualified">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">A code to make a unique VIN number</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="2"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="NationalId" form="unqualified">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">A person his/her national ID</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="11"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="CompanyNr" form="unqualified">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">The CBE number of the company</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="10"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element minOccurs="0" name="LanguageCode" form="unqualified">
+        <xsd:annotation>
+          <xsd:documentation xml:lang="en">Language of the CIM: 1 (Francais), 2 (Nederlands) or 3 (Deutsch)</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:integer">
+            <xsd:totalDigits value="1"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--Request getIdentity definition-->
+  <xsd:complexType name="GetVehicleRegistrationRequestType">
+    <xsd:sequence>
+      <xsd:element name="messageContext" type="cme:RequestMessageContextType"/>
+      <xsd:element name="legalContext" type="cme:LegalContextType"/>
+      <xsd:element name="consumerContext" type="cme:ConsumerContextType"/>
+      <xsd:element name="request" type="tns:vehicleRegistrationRequestType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--Request getIdentity definition-->
+  <xsd:complexType name="GetVehicleRegistrationResponseType">
+    <xsd:sequence>
+      <xsd:element name="messageContext" type="cme:ResponseMessageContextType"/>
+      <xsd:element name="responses" type="tns:VehicleRegistrationResponsesType" minOccurs="0"/>
+      <xsd:element name="exceptions" type="exc:ExceptionsType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Technical errors that occur when processing the message context e.g. insufficient rights.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="VehicleRegistrationResponsesType">
+    <xsd:sequence>
+      <xsd:element name="response" type="tns:VehicleRegistrationResponseType" minOccurs="1" maxOccurs="1"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="VehicleRegistrationResponseType">
+    <xsd:sequence>
+      <xsd:element name="ExportIKeys" form="unqualified">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="PlateNr" form="unqualified">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="en">License plate number</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="10"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="Vin" form="unqualified">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="en">Vehicle Identification Number or Chassisnumber</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="17"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="Unifier" form="unqualified">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="en">A code to make a unique VIN number</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="2"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="NationalId" form="unqualified">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="en">A person his/her national ID</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="11"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="CompanyNr" form="unqualified">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="en">The CBE number of the company</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="10"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="LanguageCode" form="unqualified">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="en">Language of the CIM: 1 (Francais), 2 (Nederlands) or 3 (Deutsch)</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:integer">
+                  <xsd:totalDigits value="1"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ExportIMessage" form="unqualified">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="Code" form="unqualified">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="en">An error code</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="7"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+            <xsd:element name="Label" form="unqualified">
+              <xsd:annotation>
+                <xsd:documentation xml:lang="en">The error code description</xsd:documentation>
+              </xsd:annotation>
+              <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                  <xsd:maxLength value="255"/>
+                </xsd:restriction>
+              </xsd:simpleType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="ExportGroup" form="unqualified">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element maxOccurs="5" minOccurs="0" name="row" form="unqualified">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="ExportGrITitular" form="unqualified">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="NationalId" form="unqualified">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">A person his/her national ID</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="11"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="TitularId" form="unqualified">
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:integer">
+                              <xsd:totalDigits value="10"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="LastName" form="unqualified">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Lastname in case of a physical person or a companyname in case of a moral person</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="160"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="FirstName1" form="unqualified">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">First forename</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="50"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="FirstName2" form="unqualified">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Second forename</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="50"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="FirstName3" form="unqualified">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Third forename</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="50"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="BirthDate" form="unqualified">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Date of birth</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:integer">
+                              <xsd:totalDigits value="8"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="DeathDate" form="unqualified">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Date of death</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:integer">
+                              <xsd:totalDigits value="8"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="StreetName" form="unqualified">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Name of the street</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="100"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="HouseNr" form="unqualified">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">The house number in the street</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="11"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="BoxNr" form="unqualified">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">The box number at the specific streetname and house_nr</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="11"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="PostalCode" form="unqualified">
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="4"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="CityName" form="unqualified">
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="100"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="NisNr" form="unqualified">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Nis number, code given by the National Institute of Statistics</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="5"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="NatRegStreetNr" form="unqualified">
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="4"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="CompanyNr" form="unqualified">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">The CBE number of the company</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="10"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="CompanyBeginDate" form="unqualified">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">The begin date of the company</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:integer">
+                              <xsd:totalDigits value="8"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="CompanyEndDate" form="unqualified">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">The end date of a company</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:integer">
+                              <xsd:totalDigits value="8"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="CompanyLegalStateCode" form="unqualified">
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="3"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="CompanyLegalStateDesc" form="unqualified">
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="60"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="CompanyLegalFormCode" form="unqualified">
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="3"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="CompanyLegalFormDesc" form="unqualified">
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="60"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="ExportGrIRegistration" form="unqualified">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="PlateNr" form="unqualified">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Number as it appears on the plate without any edit characters</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="10"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="PlateType" form="unqualified">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">License plate type</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="3"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="PlateTypeLabel" form="unqualified">
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="30"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="TitularRegDate" form="unqualified" minOccurs="0">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Date when the titular is first assigned the plate</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:integer">
+                              <xsd:totalDigits value="8"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="LastRegDate" form="unqualified" minOccurs="0">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Date when the vehicle was lat registered, when the vehicle was linked to the registration</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:integer">
+                              <xsd:totalDigits value="8"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="EndDate" form="unqualified" minOccurs="0">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">The planned end date for the validity of temporary and commercial plates.</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:integer">
+                              <xsd:totalDigits value="8"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="StartSituationDate" form="unqualified" minOccurs="0">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">The date when the status was accorded to this registration</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:integer">
+                              <xsd:totalDigits value="8"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="LastUpdate" form="unqualified" minOccurs="0">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Date and time when the registration data was last changed</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="20"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="StatusCode" form="unqualified" minOccurs="0">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Status code of a registration</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="3"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="StatusLabel" form="unqualified" minOccurs="0">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Omschrijving van de status</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="30"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="LegalStatusCode" form="unqualified" minOccurs="0">
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="3"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="LegalStatusLabel" form="unqualified" minOccurs="0">
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="30"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="AdministrativeStatusCode" form="unqualified" minOccurs="0">
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="3"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="AdministrativeStatusLabel" form="unqualified" minOccurs="0">
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="30"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="LanguageCode" form="unqualified" minOccurs="0">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Certificate language: 1 (Francais), 2 (Nederlands) or 3 (Deutsch)</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:integer">
+                              <xsd:totalDigits value="1"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="ExportGrIInsurance" form="unqualified" minOccurs="0">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="Code" form="unqualified">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Insurance company number</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="10"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="CompanyName" form="unqualified">
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="80"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                  <xsd:element name="ExportGrIVehicle" form="unqualified">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="Vin" form="unqualified">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Vehicle Identification Number or Chassisnumber</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="17"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="Unifier" form="unqualified">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">A code to make a unique VIN number</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="2"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="CategoryCode" form="unqualified">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">European category code</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="10"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="CategoryLabel" form="unqualified">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">European category description</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="100"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="BodyworktypeCode" form="unqualified">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">European code for bodywork type</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="2"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="BodyworktypeLabel" form="unqualified">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Description for the european code for bodywork type</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="30"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="CommercialName" form="unqualified">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Commercial name of vehicle (CoC 2.0.1)</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="60"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="MakeName" form="unqualified">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Make name</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="20"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="KindCode" form="unqualified">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Vehicle kind code</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="2"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="KindLabel" form="unqualified">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Vehicle kind description</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="30"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="FuelCode" form="unqualified">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Fuel code</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="2"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="FuelLabel" form="unqualified">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Fuel description</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="30"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="EuroNormCode" form="unqualified">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Euronorm</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="3"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="BuildDate" form="unqualified" minOccurs="0">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Vehicle build date</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:integer">
+                              <xsd:totalDigits value="8"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="FirstRegistrationDate" form="unqualified">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Vehicle first registration date (the first time a plate was assigned to it)</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:integer">
+                              <xsd:totalDigits value="8"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="TotalCylinderCapacity" form="unqualified" minOccurs="0">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Vehicle cylinder (cc)</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:integer">
+                              <xsd:totalDigits value="5"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="StatusCode" form="unqualified" minOccurs="0">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Vehicle life cycle status</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="3"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="StatusLabel" form="unqualified" minOccurs="0">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Description of the vehicle life cycle status</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="30"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="LegalStatusCode" form="unqualified" minOccurs="0">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Vehicle legal status</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="3"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="LegalStatusLabel" form="unqualified" minOccurs="0">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Description of the vehicle legal status</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="30"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="AdministrativeStatusCode" form="unqualified" minOccurs="0">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Vehicle administrative status</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="3"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="AdministrativeStatusLabel" form="unqualified" minOccurs="0">
+                          <xsd:annotation>
+                            <xsd:documentation xml:lang="en">Description of the vehicle administrative status</xsd:documentation>
+                          </xsd:annotation>
+                          <xsd:simpleType>
+                            <xsd:restriction base="xsd:string">
+                              <xsd:maxLength value="30"/>
+                            </xsd:restriction>
+                          </xsd:simpleType>
+                        </xsd:element>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--Element of the request and the response-->
+  <xsd:element name="getVehicleTitularRequest" type="tns:GetVehicleTitularRequestType"/>
+  <xsd:element name="getVehicleTitularResponse" type="tns:GetVehicleTitularResponseType"/>
+  <xsd:element name="getVehicleRegistrationRequest" type="tns:GetVehicleRegistrationRequestType"/>
+  <xsd:element name="getVehicleRegistrationResponse" type="tns:GetVehicleRegistrationResponseType"/>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:/home/isr/git/parent/vehicleservice_1.0/VehicleServiceGateway/src/main/resources/wsdl/vehicleService/1.0.0/messages/baseMessageTypes_v1.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://fidus.brussels/type/common/messages/v1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:cmn="http://fidus.brussels/type/common/v1" xmlns:nps="http://fidus.brussels/service/personservice/personservices/naturalPerson/v1" xmlns:tns="http://fidus.brussels/type/common/messages/v1">
+  <!--Unformatted message Id-->
+  <xsd:simpleType name="MessageIdType">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1"/>
+      <xsd:maxLength value="64"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="CompanyNumberType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="20"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="CompanyIdType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="20"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!--National Number of the person. Format depending on the Register-->
+  <xsd:simpleType name="PersonNumberType">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="[0-9][0-9](([0][0-9])|([1][0-2]))(([0-2][0-9])|([3][0-1]))(([0-9]{2}[1-9])|([0-9][1-9][0-9])|([1-9][0-9]{2}))(([0-8][0-9])|([9][0-7]))">
+        <xsd:annotation>
+          <xsd:documentation>National Register format</xsd:documentation>
+        </xsd:annotation>
+      </xsd:pattern>
+      <xsd:pattern value="[0-9][0-9](([2][0-9])|([3][0-2]))(([0-2][0-9])|([3][0-1]))[0-9]{3}(([0-8][0-9])|([9][0-7]))">
+        <xsd:annotation>
+          <xsd:documentation>CBSS Register format: Bis Register</xsd:documentation>
+        </xsd:annotation>
+      </xsd:pattern>
+      <xsd:pattern value="[0-9][0-9](([4][0-9])|([5][0-2]))(([0-2][0-9])|([3][0-1]))[0-9]{3}(([0-8][0-9])|([9][0-7]))">
+        <xsd:annotation>
+          <xsd:documentation>CBSS Register format: Ter Register</xsd:documentation>
+        </xsd:annotation>
+      </xsd:pattern>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!--Request message context-->
+  <xsd:complexType name="RequestMessageContextType">
+    <xsd:annotation>
+      <xsd:documentation>Message context block generated by the consumer.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="messageId" type="tns:MessageIdType">
+        <xsd:annotation>
+          <xsd:documentation>Consumer must assign their own MessageId reference for the request.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="timestamp" type="xsd:dateTime" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Timestamp when client sent request.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--Response message context-->
+  <xsd:complexType name="ResponseMessageContextType">
+    <xsd:annotation>
+      <xsd:documentation>MessageContext block generated by Fidus.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="messageId" type="tns:MessageIdType">
+        <xsd:annotation>
+          <xsd:documentation>A unique identifier generated by Fidus.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="transactionId" type="tns:MessageIdType">
+        <xsd:annotation>
+          <xsd:documentation>A unique ID returned to the client for tracing purposes.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="timestamp" type="xsd:dateTime" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Time reply was sent by Fidus.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--Legal Context : the finality of the Privacy Commission-->
+  <xsd:simpleType name="LegalContextType">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1"/>
+      <xsd:maxLength value="64"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="ConsumerContextType">
+    <xsd:annotation>
+      <xsd:documentation>Message context block containing the Consumer's company information.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="companyNumber" type="tns:CompanyNumberType">
+        <xsd:annotation>
+          <xsd:documentation>Consumer must assign the company KBO number.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="companyId" type="tns:CompanyIdType">
+        <xsd:annotation>
+          <xsd:documentation>Consumer must assign the id of the company.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="UserContextType">
+    <xsd:annotation>
+      <xsd:documentation>The user context defines information regarding the actual user performing a request.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="language" type="xsd:language" nillable="true">
+        <xsd:annotation>
+          <xsd:documentation>The preferred language of the actual user performing the request.
+						This influences the language in which response elements are cast.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:/home/isr/git/parent/vehicleservice_1.0/VehicleServiceGateway/src/main/resources/wsdl/vehicleService/1.0.0/messages/exceptionTypes_v1.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://fidus.brussels/type/common/exceptions/v1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://fidus.brussels/type/common/exceptions/v1">
+  <!--Basic error typed-->
+  <xsd:complexType name="ExceptionsType">
+    <xsd:sequence>
+      <xsd:element name="exception" type="tns:ExceptionType" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ExceptionType">
+    <xsd:sequence>
+      <xsd:element name="type" type="tns:ExceptionClassType"/>
+      <xsd:element name="code" type="tns:ExceptionCodeType"/>
+      <xsd:element name="source" type="tns:ExceptionSourceType"/>
+      <xsd:element name="description" type="tns:ExceptionDescriptionType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="ExceptionClassType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="ERROR"/>
+      <xsd:enumeration value="WARNING"/>
+      <xsd:enumeration value="INFO"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="ExceptionCodeType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="20"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="ExceptionSourceType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="20"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="ExceptionDescriptionType">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints>
+      
+      
+      
+      
+    <con:endpoint>http://fidus.brussels/services/vehicleservice/v1</con:endpoint><con:endpoint>https://192.168.22.53:8443/services/VehicleService_v1.1</con:endpoint><con:endpoint>https://192.168.22.54:8443/services/VehicleService_v1.1</con:endpoint><con:endpoint>https://192.168.24.16:8443/services/VehicleService_v1.1</con:endpoint><con:endpoint>https://192.168.24.17:8443/services/VehicleService_v1.1</con:endpoint><con:endpoint>https://192.168.26.19:8443/services/VehicleService_v1.1</con:endpoint><con:endpoint>https://192.168.26.22:8443/services/VehicleService_v1.1</con:endpoint><con:endpoint>https://192.168.36.61:8243/services/VehicleService_v1.1</con:endpoint><con:endpoint>https://esb-security-gw.sta.srv.cirb.lan:8443/services/VehicleService_v1.1</con:endpoint><con:endpoint>https://esb-security-gw.sta.srv.cirb.lan:8443/services/VehicleService_v1.1</con:endpoint><con:endpoint>https://fidus-esb-sg.prd.srv.cirb.lan:8443/services/VehicleService_v1.1</con:endpoint><con:endpoint>https://fidus-test.irisnetlab.be/services/VehicleService_v1.1</con:endpoint><con:endpoint>https://fidus.irisnetlab.be/services/VehicleService_v1.1</con:endpoint><con:endpoint>https://fidus.sec.brussels/services/VehicleService_v1.1</con:endpoint><con:endpoint>https://localhost:8243/services/VehicleService_v1.1</con:endpoint></con:endpoints>
+    <con:operation id="144018a8-563c-4169-b91a-767d612ab2ef" isOneWay="false" action="http://fidus.brussels/services/vehicleservice/getVehicleTitular" name="getVehicleTitular" bindingOperationName="getVehicleTitular" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="863bffa9-7080-45be-b00a-e6e3cb94164e" name="01 - Local - Request" outgoingWss="Outflow DEV" incomingWss="Inflow DEV">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>https://localhost:8243/services/VehicleService_v1.0</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleTitularRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>207541594</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <!--Optional:-->
+            <PlateNr>ASK-050</PlateNr>
+            <LanguageCode>2</LanguageCode>
+         </v1:request>
+      </v1:getVehicleTitularRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:mediate"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+      <con:call id="be8af23a-ef74-41cd-bef1-0cee588991e3" name="02 - Dev - Request" outgoingWss="Outflow DEV" incomingWss="Inflow DEV">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>https://192.168.36.61:8243/services/VehicleService_v1.0</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleTitularRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>207541594</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <!--Optional:-->
+            <PlateNr>ASK-050</PlateNr>
+         </v1:request>
+      </v1:getVehicleTitularRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="urn:mediate"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+      <con:call id="4f8e77ce-413d-4446-abab-466c0adcad91" name="03 - Test - External Request" outgoingWss="Outflow TEST" incomingWss="Inflow TEST">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>https://fidus-test.irisnetlab.be/services/VehicleService_v1.0</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleTitularRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>207541594</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <!--Optional:-->
+            <PlateNr>ASK050</PlateNr>
+            <LanguageCode>1</LanguageCode>
+         </v1:request>
+      </v1:getVehicleTitularRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/vehicleservice/getVehicleTitular"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+      <con:call id="0978c929-5eff-47a7-a766-dab317119df3" name="03 - Test - LB Request" outgoingWss="Outflow TEST">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>https://esb-security-gw.sta.srv.cirb.lan:8443/services/VehicleService_v1.0</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleTitularRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>207541594</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <!--Optional:-->
+            <PlateNr>ASK050</PlateNr>
+         </v1:request>
+      </v1:getVehicleTitularRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/vehicleservice/getVehicleTitular"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+      <con:call id="e8c6856c-efec-4796-9874-b3c6a7a99cfe" name="03 - Test - Worker1 - Request" outgoingWss="Outflow TEST" incomingWss="Inflow TEST">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>https://192.168.22.53:8443/services/VehicleService_v1.0</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleTitularRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>207541594</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <!--Optional:-->
+            <PlateNr>ASK050</PlateNr>
+            <LanguageCode>1</LanguageCode>
+         </v1:request>
+      </v1:getVehicleTitularRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/vehicleservice/getVehicleTitular"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+      
+      <con:call id="a049d3e9-9f0e-4663-a956-7aea7c79de45" name="04 - Staging - External Request" outgoingWss="Outflow STAGING" incomingWss="Inflow STAGING">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>https://fidus.irisnetlab.be/services/VehicleService_v1.0</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleTitularRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>207541594</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <!--Optional:-->
+            <PlateNr>ASK050</PlateNr>
+            <LanguageCode>1</LanguageCode>
+         </v1:request>
+      </v1:getVehicleTitularRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/vehicleservice/getVehicleTitular"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+      <con:call id="6378030d-a520-41e8-b6c0-1c456e7b3a99" name="04 - Staging - LB Request" outgoingWss="Outflow STAGING" incomingWss="Inflow STAGING">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>https://fidus-esb-sg.sta.srv.cirb.lan:8443/services/VehicleService_v1.0</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleTitularRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>207541594</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <!--Optional:-->
+            <PlateNr>ASK050</PlateNr>
+            <LanguageCode>1</LanguageCode>
+         </v1:request>
+      </v1:getVehicleTitularRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/vehicleservice/getVehicleTitular"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+      <con:call id="ef391d7e-df04-42a4-b3d9-19e4956f0bd6" name="04 - Staging - Worker 1" outgoingWss="Outflow STAGING" incomingWss="Inflow STAGING">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>https://192.168.24.16:8443/services/VehicleService_v1.0</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleTitularRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>207541594</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <!--Optional:-->
+            <PlateNr>ASK050</PlateNr>
+            <LanguageCode>1</LanguageCode>
+         </v1:request>
+      </v1:getVehicleTitularRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/vehicleservice/getVehicleTitular"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+      <con:call id="b0f92fda-a8b5-44c0-a54e-59628c6c5177" name="04 - Staging - Worker 2" outgoingWss="Outflow STAGING" incomingWss="Inflow STAGING">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>https://192.168.24.17:8443/services/VehicleService_v1.0</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleTitularRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>207541594</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <!--Optional:-->
+            <PlateNr>ASK050</PlateNr>
+            <LanguageCode>1</LanguageCode>
+         </v1:request>
+      </v1:getVehicleTitularRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/vehicleservice/getVehicleTitular"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+      <con:call id="f0bf12c4-cfda-4c2e-9605-2aecc57c1543" name="05 - Prod - External Request" outgoingWss="Outflow PROD" incomingWss="Inflow PROD">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>https://fidus.sec.brussels/services/VehicleService_v1.0</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleTitularRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>0316381039</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <!--Optional:-->
+            <PlateNr>ASK050</PlateNr>
+            <LanguageCode>1</LanguageCode>
+         </v1:request>
+      </v1:getVehicleTitularRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/vehicleservice/getVehicleTitular"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+      <con:call id="02891efb-0cc4-4082-b552-386b88c7c42a" name="05 - Prod - LB Request" outgoingWss="Outflow PROD" incomingWss="Inflow PROD">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>https://fidus-esb-sg.prd.srv.cirb.lan:8443/services/VehicleService_v1.0</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleTitularRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>0316381039</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <!--Optional:-->
+            <PlateNr>ASK050</PlateNr>
+            <LanguageCode>1</LanguageCode>
+         </v1:request>
+      </v1:getVehicleTitularRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/vehicleservice/getVehicleTitular"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+      <con:call id="7c23af29-8ab8-4079-aefc-63889db257f0" name="05 - Prod - Worker 1" outgoingWss="Outflow PROD" incomingWss="Inflow PROD">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>https://192.168.26.19:8443/services/VehicleService_v1.0</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleTitularRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>0316381039</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <!--Optional:-->
+            <PlateNr>ASK050</PlateNr>
+            <LanguageCode>1</LanguageCode>
+         </v1:request>
+      </v1:getVehicleTitularRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/vehicleservice/getVehicleTitular"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+      <con:call id="b45a3617-b613-46e9-aba0-7301fd5b386f" name="05 - Prod - Worker 2" outgoingWss="Outflow PROD" incomingWss="Inflow PROD">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>https://192.168.26.22:8443/services/VehicleService_v1.0</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleTitularRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>0316381039</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <!--Optional:-->
+            <PlateNr>ASK050</PlateNr>
+            <LanguageCode>1</LanguageCode>
+         </v1:request>
+      </v1:getVehicleTitularRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/vehicleservice/getVehicleTitular"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    <con:call id="8a96a48a-6cdd-4774-8fe9-4e7ee495ca90" name="03 - Test - Worker2 - Request" outgoingWss="Outflow TEST" incomingWss="Inflow TEST"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.22.54:8443/services/VehicleService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleTitularRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>207541594</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <!--Optional:-->
+            <PlateNr>ASK050</PlateNr>
+            <LanguageCode>1</LanguageCode>
+         </v1:request>
+      </v1:getVehicleTitularRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/vehicleservice/getVehicleTitular"/><con:wsrmConfig version="1.2"/></con:call></con:operation>
+    <con:operation id="32933821-8667-40df-ad8b-e1349d9e8848" isOneWay="false" action="http://fidus.brussels/services/vehicleservice/getVehicleRegistration" name="getVehicleRegistration" bindingOperationName="getVehicleRegistration" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional">
+      <con:settings/>
+      <con:call id="a4debd50-b691-4228-9512-0e157260ebfc" name="01 - Local - Request" outgoingWss="Outflow DEV" incomingWss="Inflow DEV">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>https://localhost:8243/services/VehicleService_v1.0</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleRegistrationRequest>
+		<v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>207541594</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <PlateNr>ASK050</PlateNr>
+            <LanguageCode>2</LanguageCode>
+         </v1:request>
+      </v1:getVehicleRegistrationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/vehicleservice/getVehicleRegistration"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+      <con:call id="f6883eec-9b4b-4c80-9585-9510ce0d2794" name="02 - Dev - Request" outgoingWss="Outflow DEV" incomingWss="Inflow DEV">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>https://192.168.36.61:8243/services/VehicleService_v1.0</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleRegistrationRequest>
+		<v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>            
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>207541594</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>            
+            <PlateNr>ASK-050</PlateNr>            
+            <LanguageCode>2</LanguageCode>
+         </v1:request>
+      </v1:getVehicleRegistrationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/vehicleservice/getVehicleRegistration"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+      <con:call id="4ffb87cf-ddda-4815-86f1-49006afaf339" name="03 - Test - External Request" outgoingWss="Outflow TEST" incomingWss="Inflow TEST">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>https://fidus-test.irisnetlab.be/services/VehicleService_v1.0</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleRegistrationRequest>
+		<v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>0316381039</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <PlateNr>YHN162</PlateNr>
+            <LanguageCode>1</LanguageCode>
+         </v1:request>
+      </v1:getVehicleRegistrationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/vehicleservice/getVehicleRegistration"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+      <con:call id="efa727c9-01d5-42d9-b4f4-895cbabff9fa" name="03 - Test - LB Request" outgoingWss="Outflow TEST" incomingWss="Inflow TEST">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>https://esb-security-gw.sta.srv.cirb.lan:8443/services/VehicleService_v1.0</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleRegistrationRequest>
+		<v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>0316381039</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <PlateNr>ASK050</PlateNr>
+            <LanguageCode>2</LanguageCode>
+         </v1:request>
+      </v1:getVehicleRegistrationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/vehicleservice/getVehicleRegistration"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+      <con:call id="9fc8a633-166f-4c28-8018-cc8b4657d361" name="03 - Test - Worker1 Request" outgoingWss="Outflow TEST" incomingWss="Inflow TEST">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>https://192.168.22.53:8443/services/VehicleService_v1.0</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleRegistrationRequest>
+		<v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>0316381039</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <PlateNr>ASK050</PlateNr>
+            <LanguageCode>2</LanguageCode>
+         </v1:request>
+      </v1:getVehicleRegistrationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/vehicleservice/getVehicleRegistration"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+      <con:call id="70b7dc71-f0cb-46d4-8105-1ef20dc6ee85" name="03 - Test - Worker2 Request" outgoingWss="Outflow TEST" incomingWss="Inflow TEST">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>https://192.168.22.54:8443/services/VehicleService_v1.0</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleRegistrationRequest>
+		<v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>0316381039</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <PlateNr>ASK050</PlateNr>
+            <LanguageCode>2</LanguageCode>
+         </v1:request>
+      </v1:getVehicleRegistrationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/vehicleservice/getVehicleRegistration"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+      <con:call id="85a8b7fe-8b8c-4e03-b5f3-ef6cdb2e3bf0" name="04 - Staging - External Request" outgoingWss="Outflow STAGING" incomingWss="Inflow STAGING">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:encoding>UTF-8</con:encoding>
+        <con:endpoint>https://fidus.irisnetlab.be/services/VehicleService_v1.0</con:endpoint>
+        <con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleRegistrationRequest>
+		<v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>0316381039</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <PlateNr>1HVL001</PlateNr>
+            <LanguageCode>2</LanguageCode>
+         </v1:request>
+      </v1:getVehicleRegistrationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request>
+        <con:credentials>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:jmsPropertyConfig/>
+        <con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/vehicleservice/getVehicleRegistration"/>
+        <con:wsrmConfig version="1.2"/>
+      </con:call>
+    <con:call id="679874a9-7bf6-4fbf-84fc-1b4115d032e6" name="05 - Prod - External Request" outgoingWss="Outflow PROD" incomingWss="Inflow PROD"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus.sec.brussels/services/VehicleService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleRegistrationRequest>
+		<v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>0316381039</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <PlateNr>1HVL001</PlateNr>
+            <LanguageCode>2</LanguageCode>
+         </v1:request>
+      </v1:getVehicleRegistrationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/vehicleservice/getVehicleRegistration"/><con:wsrmConfig version="1.2"/></con:call><con:call id="6101136d-0117-4075-acb7-34183246df63" name="04 - Staging - LB Request" outgoingWss="Outflow STAGING" incomingWss="Inflow STAGING"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus-esb-sg.sta.srv.cirb.lan:8443/services/VehicleService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleRegistrationRequest>
+		<v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>0316381039</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <PlateNr>1HVL001</PlateNr>
+            <LanguageCode>2</LanguageCode>
+         </v1:request>
+      </v1:getVehicleRegistrationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/vehicleservice/getVehicleRegistration"/><con:wsrmConfig version="1.2"/></con:call><con:call id="bd7b2225-720f-4def-8b83-b536081d5b98" name="04 - Staging - Worker 1" outgoingWss="Outflow STAGING" incomingWss="Inflow STAGING"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.16:8443/services/VehicleService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleRegistrationRequest>
+		<v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>0316381039</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <PlateNr>1HVL001</PlateNr>
+            <LanguageCode>2</LanguageCode>
+         </v1:request>
+      </v1:getVehicleRegistrationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/vehicleservice/getVehicleRegistration"/><con:wsrmConfig version="1.2"/></con:call><con:call id="879b00b5-2ee6-43ef-b62e-5f11a3d422df" name="04 - Staging - Worker 2" outgoingWss="Outflow STAGING" incomingWss="Inflow STAGING"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.17:8443/services/VehicleService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleRegistrationRequest>
+		<v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>0316381039</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <PlateNr>1HVL001</PlateNr>
+            <LanguageCode>2</LanguageCode>
+         </v1:request>
+      </v1:getVehicleRegistrationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/vehicleservice/getVehicleRegistration"/><con:wsrmConfig version="1.2"/></con:call><con:call id="6f0decf9-6b2d-4f46-94a4-86f34b34f41c" name="05 - Prod - LB Request" outgoingWss="Outflow PROD" incomingWss="Inflow PROD"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus-esb-sg.prd.srv.cirb.lan:8443/services/VehicleService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleRegistrationRequest>
+		<v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>0316381039</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <PlateNr>1HVL001</PlateNr>
+            <LanguageCode>2</LanguageCode>
+         </v1:request>
+      </v1:getVehicleRegistrationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/vehicleservice/getVehicleRegistration"/><con:wsrmConfig version="1.2"/></con:call><con:call id="9621c479-6b50-4b51-a3df-7e82b07dfebb" name="05 - Prod - Worker 1" outgoingWss="Outflow PROD" incomingWss="Inflow PROD"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.26.19:8443/services/VehicleService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleRegistrationRequest>
+		<v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>0316381039</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <PlateNr>1HVL001</PlateNr>
+            <LanguageCode>2</LanguageCode>
+         </v1:request>
+      </v1:getVehicleRegistrationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/vehicleservice/getVehicleRegistration"/><con:wsrmConfig version="1.2"/></con:call><con:call id="9f59f821-0ab3-43a1-a4d7-69071aec65eb" name="05 - Prod - Worker 2" outgoingWss="Outflow PROD" incomingWss="Inflow PROD"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.26.22:8443/services/VehicleService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleRegistrationRequest>
+		<v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>0316381039</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <PlateNr>1HVL001</PlateNr>
+            <LanguageCode>2</LanguageCode>
+         </v1:request>
+      </v1:getVehicleRegistrationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/vehicleservice/getVehicleRegistration"/><con:wsrmConfig version="1.2"/></con:call></con:operation>
+  </con:interface>
+  <con:testSuite id="341cbc09-5367-4523-846d-537d1761b1f9" name="DEV"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="ebe28d12-0553-4207-bf74-621f4e12b903" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getVehicleTitular" searchProperties="true"><con:settings/><con:testStep type="request" id="fbe9254a-effc-49ed-97ba-965f0cc32f2b" name="testcase02 - Dev - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>VehicleServiceHTTPBinding</con:interface><con:operation>getVehicleTitular</con:operation><con:request name="testcase02 - Dev - Request" id="33c8a355-4fb7-4fb0-93af-b49c7448ca82" outgoingWss="Outflow DEV"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.36.61:8243/services/VehicleService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleTitularRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>207541594</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <!--Optional:-->
+            <PlateNr>ASK-050</PlateNr>
+         </v1:request>
+      </v1:getVehicleTitularRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="4eb3a993-4acf-4e11-9863-a7cde837675e" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="2b3bdcea-abb6-4c28-8292-5feec4bab18e" name="SOAP Response"/><con:assertion type="Schema Compliance" id="db0c57df-167a-42d0-86ef-bc0aaada9737" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/vehicleservice/getVehicleTitular"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="fac82060-1cdd-492d-986c-599c7257a271" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getVehicleRegistration" searchProperties="true"><con:settings/><con:testStep type="request" id="9760c619-1b81-45c9-abac-9392e14b8aa3" name="testcase02 - Dev - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>VehicleServiceHTTPBinding</con:interface><con:operation>getVehicleRegistration</con:operation><con:request name="testcase02 - Dev - Request" id="b5737f03-0799-49b0-bc9e-60cdd0656503" outgoingWss="Outflow DEV"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.36.61:8243/services/VehicleService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleRegistrationRequest>
+		<v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>            
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>207541594</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>            
+            <PlateNr>ASK-050</PlateNr>            
+            <LanguageCode>2</LanguageCode>
+         </v1:request>
+      </v1:getVehicleRegistrationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="61771d40-c001-4693-bb73-d34bc4836201" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="df2701c8-d6a9-4138-8353-6b5612f78755" name="SOAP Response"/><con:assertion type="Schema Compliance" id="ba4115dc-09a5-4522-b0d2-607a92225256" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/vehicleservice/getVehicleRegistration"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:testSuite id="08059083-60eb-4243-b2d0-bf638ba4ad55" name="TEST"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="6eb8ba6b-7f86-43fb-a5e4-1c9d1ad809f7" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getVehicleTitular" searchProperties="true"><con:settings/><con:testStep type="request" id="c20c76ff-ccd8-49ef-9850-b05f4e456e35" name="testcase03 - Test - External Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>VehicleServiceHTTPBinding</con:interface><con:operation>getVehicleTitular</con:operation><con:request name="testcase03 - Test - External Request" id="a891edd4-25ae-4569-8564-342bf379a80c" outgoingWss="Outflow TEST"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus-test.irisnetlab.be/services/VehicleService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleTitularRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>207541594</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <!--Optional:-->
+            <PlateNr>ASK050</PlateNr>
+            <LanguageCode>1</LanguageCode>
+         </v1:request>
+      </v1:getVehicleTitularRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="e5d32447-3447-4bdf-8daa-96a8c7a3d454" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="01c1f96e-37a5-4b7a-a20e-7ce8a7e74bef" name="SOAP Response"/><con:assertion type="Schema Compliance" id="7d1552b3-6cd7-4db8-ba1a-e7ff366ec510" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/vehicleservice/getVehicleTitular"/></con:request></con:config></con:testStep><con:testStep type="request" id="6e0e0920-832a-4189-ba8d-54644f9fcbff" name="testcase03 - Test - LB Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>VehicleServiceHTTPBinding</con:interface><con:operation>getVehicleTitular</con:operation><con:request name="testcase03 - Test - LB Request" id="3864db99-3c25-4c8d-b4ff-21826c9d74cc" outgoingWss="Outflow TEST"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://esb-security-gw.sta.srv.cirb.lan:8443/services/VehicleService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleTitularRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>207541594</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <!--Optional:-->
+            <PlateNr>ASK050</PlateNr>
+         </v1:request>
+      </v1:getVehicleTitularRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="2e0c520e-327c-43be-a5e1-fa1c5dcebad7" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="c01ec147-81e0-4a01-8823-3c0c5894d68e" name="SOAP Response"/><con:assertion type="Schema Compliance" id="d5fd7420-5b16-496e-a80a-63afe0199ce5" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/vehicleservice/getVehicleTitular"/></con:request></con:config></con:testStep><con:testStep type="request" id="f9886ebe-f1c7-4eb4-a761-23f8f2557ece" name="testcase03 - Test - Worker1 - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>VehicleServiceHTTPBinding</con:interface><con:operation>getVehicleTitular</con:operation><con:request name="testcase03 - Test - Worker1 - Request" id="3bf9adfe-9f10-42a6-bebc-2269ef87358d" outgoingWss="Outflow TEST"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.45:8443/services/VehicleService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleTitularRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>207541594</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <!--Optional:-->
+            <PlateNr>ASK050</PlateNr>
+            <LanguageCode>1</LanguageCode>
+         </v1:request>
+      </v1:getVehicleTitularRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="5a246025-f8c1-42c7-8c28-5f7ca3f585e3" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="74d9d31f-7076-4fd3-8e50-c7343e31e880" name="SOAP Response"/><con:assertion type="Schema Compliance" id="69be083e-b1e0-4468-b67b-c0c10ae090a2" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/vehicleservice/getVehicleTitular"/></con:request></con:config></con:testStep><con:testStep type="request" id="9186f81d-add4-4670-b27c-715d6f3e57df" name="testcase03 - Test - Worker2 - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>VehicleServiceHTTPBinding</con:interface><con:operation>getVehicleTitular</con:operation><con:request name="testcase03 - Test - Worker2 - Request" id="7474c2e1-7fc7-42a6-893c-6954c0bcd63f" outgoingWss="Outflow TEST"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.51:8443/services/VehicleService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleTitularRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>207541594</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <!--Optional:-->
+            <PlateNr>ASK050</PlateNr>
+            <LanguageCode>1</LanguageCode>
+         </v1:request>
+      </v1:getVehicleTitularRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="bb295a79-3236-4add-9380-da4e6c4858cb" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="f7be9056-db4f-4150-9076-6918752c4eb1" name="SOAP Response"/><con:assertion type="Schema Compliance" id="f4226a2a-cd20-477a-97cf-eb4e97006a54" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/vehicleservice/getVehicleTitular"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="85230689-1c7c-4446-8ef3-8dadb047a13e" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getVehicleRegistration" searchProperties="true"><con:settings/><con:testStep type="request" id="53fe3c0d-4f82-48b1-ae51-966149fe2e42" name="testcase03 - Test - External Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>VehicleServiceHTTPBinding</con:interface><con:operation>getVehicleRegistration</con:operation><con:request name="testcase03 - Test - External Request" id="9511ac9e-0ecb-4396-8d49-82bdc35dff2c" outgoingWss="Outflow TEST"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus-test.irisnetlab.be/services/VehicleService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleRegistrationRequest>
+		<v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>0316381039</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <PlateNr>YHN162</PlateNr>
+            <LanguageCode>1</LanguageCode>
+         </v1:request>
+      </v1:getVehicleRegistrationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="191f9977-baad-4f95-9f62-0648162bee05" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="10c7144b-95e3-4379-b72e-68605c6dd5d7" name="SOAP Response"/><con:assertion type="Schema Compliance" id="3b7b5cd1-168d-4efe-98ee-88ec8617c64c" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/vehicleservice/getVehicleRegistration"/></con:request></con:config></con:testStep><con:testStep type="request" id="6e8385d7-fbd0-4ae8-ae92-5de7709096ce" name="testcase03 - Test - LB Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>VehicleServiceHTTPBinding</con:interface><con:operation>getVehicleRegistration</con:operation><con:request name="testcase03 - Test - LB Request" id="ac007469-bc3c-4e3a-a7c7-144bcadf3ffc" outgoingWss="Outflow TEST"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://esb-security-gw.sta.srv.cirb.lan:8443/services/VehicleService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleRegistrationRequest>
+		<v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>0316381039</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <PlateNr>ASK050</PlateNr>
+            <LanguageCode>2</LanguageCode>
+         </v1:request>
+      </v1:getVehicleRegistrationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="ee24c90e-8380-4f9b-9f39-ff5fb1ebccd0" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="853eda76-d248-4c7e-8ec4-708e253f734d" name="SOAP Response"/><con:assertion type="Schema Compliance" id="c153035e-7bd1-492c-aef3-a4e6160c6ae5" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/vehicleservice/getVehicleRegistration"/></con:request></con:config></con:testStep><con:testStep type="request" id="0eed53bc-742b-4b05-ab6f-0593f65d9bcb" name="testcase03 - Test - Worker1 Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>VehicleServiceHTTPBinding</con:interface><con:operation>getVehicleRegistration</con:operation><con:request name="testcase03 - Test - Worker1 Request" id="e8e7e5cf-6012-445b-b7c1-61b32ffaf6a2" outgoingWss="Outflow TEST"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.45:8443/services/VehicleService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleRegistrationRequest>
+		<v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>0316381039</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <PlateNr>ASK050</PlateNr>
+            <LanguageCode>2</LanguageCode>
+         </v1:request>
+      </v1:getVehicleRegistrationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="8ecfba13-5889-4203-b922-d4d852aa7ac6" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="8d6be085-60b2-4ae3-9247-873204fee73a" name="SOAP Response"/><con:assertion type="Schema Compliance" id="b7d6dcff-531e-4c29-ada6-0757c849038b" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/vehicleservice/getVehicleRegistration"/></con:request></con:config></con:testStep><con:testStep type="request" id="41d97507-c40f-48ae-aea9-6f05c7d770df" name="testcase03 - Test - Worker2 Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>VehicleServiceHTTPBinding</con:interface><con:operation>getVehicleRegistration</con:operation><con:request name="testcase03 - Test - Worker2 Request" id="09d9a4c7-9d77-44c8-b391-63148eeee15f" outgoingWss="Outflow TEST"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.51:8443/services/VehicleService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleRegistrationRequest>
+		<v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>0316381039</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <PlateNr>ASK050</PlateNr>
+            <LanguageCode>2</LanguageCode>
+         </v1:request>
+      </v1:getVehicleRegistrationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="c3346c0f-8036-4651-8e84-27a84d7902b1" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="396868f5-0069-4434-b5ab-88914560d551" name="SOAP Response"/><con:assertion type="Schema Compliance" id="c1c80b63-7871-4ef4-80bb-2ca9e3b67482" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/vehicleservice/getVehicleRegistration"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:testSuite id="cd46f410-edcb-4970-8f3c-75b1000e7ef9" name="STAG"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="cd1469c9-6f34-48c6-a38f-2bf4aa02ed13" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getVehicleTitular" searchProperties="true"><con:settings/><con:testStep type="request" id="f8442a07-8cd8-457d-b301-42292db5342e" name="testcase04 - Staging - External Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>VehicleServiceHTTPBinding</con:interface><con:operation>getVehicleTitular</con:operation><con:request name="testcase04 - Staging - External Request" id="4a9f6eb1-a26f-4db8-a467-97fb9f3188e6" outgoingWss="Outflow STAG"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus.irisnetlab.be/services/VehicleService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleTitularRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>207541594</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <!--Optional:-->
+            <PlateNr>ASK050</PlateNr>
+            <LanguageCode>1</LanguageCode>
+         </v1:request>
+      </v1:getVehicleTitularRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="17efcedf-368f-40c8-96b7-1fddfa02ed27" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="ccf187c4-5496-409a-b4c7-2d3ed122de61" name="SOAP Response"/><con:assertion type="Schema Compliance" id="c3b8655a-f33d-483b-b59b-b61135954c12" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/vehicleservice/getVehicleTitular"/></con:request></con:config></con:testStep><con:testStep type="request" id="5d386f2f-22f5-4423-a0a4-151acb43e0df" name="testcase04 - Staging - LB Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>VehicleServiceHTTPBinding</con:interface><con:operation>getVehicleTitular</con:operation><con:request name="testcase04 - Staging - LB Request" id="8e28ce0d-6fbe-4441-be65-e4dc93015526" outgoingWss="Outflow STAG"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus-esb-sg.sta.srv.cirb.lan:8443/services/VehicleService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleTitularRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>207541594</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <!--Optional:-->
+            <PlateNr>ASK050</PlateNr>
+            <LanguageCode>1</LanguageCode>
+         </v1:request>
+      </v1:getVehicleTitularRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="9eab4663-d24d-40b0-a786-8b05dcdce962" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="9f0aea0d-fc06-41fd-83b5-158930e07115" name="SOAP Response"/><con:assertion type="Schema Compliance" id="a7e16d38-9799-46b2-8c89-7317bf455559" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/vehicleservice/getVehicleTitular"/></con:request></con:config></con:testStep><con:testStep type="request" id="b78a1709-1f96-4c22-ac60-a1760014a229" name="testcase04 - Staging - Worker 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>VehicleServiceHTTPBinding</con:interface><con:operation>getVehicleTitular</con:operation><con:request name="testcase04 - Staging - Worker 1" id="c30d42ec-7c81-4686-add5-3acdd86a2ae8" outgoingWss="Outflow STAG"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.16:8443/services/VehicleService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleTitularRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>207541594</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <!--Optional:-->
+            <PlateNr>ASK050</PlateNr>
+            <LanguageCode>1</LanguageCode>
+         </v1:request>
+      </v1:getVehicleTitularRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="1555e629-9f98-453a-bca4-a7f979caeb41" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="e6be1c64-4b30-4688-b79d-e940b81af834" name="SOAP Response"/><con:assertion type="Schema Compliance" id="7ad51952-1c58-4b66-9294-8280adcaa18e" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/vehicleservice/getVehicleTitular"/></con:request></con:config></con:testStep><con:testStep type="request" id="9f586c7a-1510-4931-9d79-bacd37df7967" name="testcase04 - Staging - Worker 2"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>VehicleServiceHTTPBinding</con:interface><con:operation>getVehicleTitular</con:operation><con:request name="testcase04 - Staging - Worker 2" id="644869c2-f5b8-46e2-816c-712569c46fe6" outgoingWss="Outflow STAG"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.17:8443/services/VehicleService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleTitularRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>207541594</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <!--Optional:-->
+            <PlateNr>ASK050</PlateNr>
+            <LanguageCode>1</LanguageCode>
+         </v1:request>
+      </v1:getVehicleTitularRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="bb7799f7-6b7f-432c-ba33-b1006d6deac9" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="2fbe433f-4071-498a-bde1-fd825bf55f6c" name="SOAP Response"/><con:assertion type="Schema Compliance" id="f1edeb60-75d7-4842-98ff-a71628d170e7" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/vehicleservice/getVehicleTitular"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="92c05005-1501-461f-af6b-0d1530e40430" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getVehicleRegistration" searchProperties="true"><con:settings/><con:testStep type="request" id="73f209cb-a916-4884-a82a-d9533f2323af" name="testcase04 - Staging - External Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>VehicleServiceHTTPBinding</con:interface><con:operation>getVehicleRegistration</con:operation><con:request name="testcase04 - Staging - External Request" id="0eec562b-3cf3-4fab-b48f-035b8f2b81d8" outgoingWss="Outflow STAG"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus.irisnetlab.be/services/VehicleService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleRegistrationRequest>
+		<v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>0316381039</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <PlateNr>1HVL001</PlateNr>
+            <LanguageCode>2</LanguageCode>
+         </v1:request>
+      </v1:getVehicleRegistrationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="1c8eb1fd-e78b-4f8a-a808-ed1e9f39231c" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="be2cb2f4-5cf2-46cf-b647-cb1076c1d836" name="SOAP Response"/><con:assertion type="Schema Compliance" id="7b5da0ad-fe72-47ff-b2e8-51419bba9253" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/vehicleservice/getVehicleRegistration"/></con:request></con:config></con:testStep><con:testStep type="request" id="3a89ee7c-9ac9-4c47-9472-ab07c22ed534" name="testcase04 - Staging - LB Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>VehicleServiceHTTPBinding</con:interface><con:operation>getVehicleRegistration</con:operation><con:request name="testcase04 - Staging - LB Request" id="77c1e984-98c7-418e-a4c8-b4af24e7e365" outgoingWss="Outflow STAG"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus-esb-sg.sta.srv.cirb.lan:8443/services/VehicleService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleRegistrationRequest>
+		<v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>0316381039</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <PlateNr>1HVL001</PlateNr>
+            <LanguageCode>2</LanguageCode>
+         </v1:request>
+      </v1:getVehicleRegistrationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="87f2e3cd-e538-4564-b2c5-0a32d889d5ee" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="e2b856c6-cc14-4c8b-86ac-2ee5328e9be3" name="SOAP Response"/><con:assertion type="Schema Compliance" id="354614e5-aefd-46b6-8411-58b553f892fa" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/vehicleservice/getVehicleRegistration"/></con:request></con:config></con:testStep><con:testStep type="request" id="56896de4-9e6a-4f3a-b72e-862d850f92a4" name="testcase04 - Staging - Worker 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>VehicleServiceHTTPBinding</con:interface><con:operation>getVehicleRegistration</con:operation><con:request name="testcase04 - Staging - Worker 1" id="2527411c-a009-4cc5-a034-da4e314b15b1" outgoingWss="Outflow STAG"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.16:8443/services/VehicleService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleRegistrationRequest>
+		<v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>0316381039</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <PlateNr>1HVL001</PlateNr>
+            <LanguageCode>2</LanguageCode>
+         </v1:request>
+      </v1:getVehicleRegistrationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="174f3542-cb71-4bf1-bc12-2956d46325e9" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="9b48ea26-78fb-4050-96c0-dd03c9db5c0d" name="SOAP Response"/><con:assertion type="Schema Compliance" id="179db276-bf17-45af-a0ec-4730cb9f8bfe" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/vehicleservice/getVehicleRegistration"/></con:request></con:config></con:testStep><con:testStep type="request" id="bf548981-2160-446f-bdcc-faecfa8e89af" name="testcase04 - Staging - Worker 2"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>VehicleServiceHTTPBinding</con:interface><con:operation>getVehicleRegistration</con:operation><con:request name="testcase04 - Staging - Worker 2" id="52bb14ef-053e-41b7-9d47-f6fb20573f8e" outgoingWss="Outflow STAG"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.17:8443/services/VehicleService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleRegistrationRequest>
+		<v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>0316381039</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <PlateNr>1HVL001</PlateNr>
+            <LanguageCode>2</LanguageCode>
+         </v1:request>
+      </v1:getVehicleRegistrationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="a26d4646-a34a-4edb-84c3-6a5974e50df0" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="8b6ebe12-ce09-404a-8da8-34a3fb234ff0" name="SOAP Response"/><con:assertion type="Schema Compliance" id="61dd3f6e-a271-4802-adbc-414b3c9b32da" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/vehicleservice/getVehicleRegistration"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:testSuite id="415c9b4b-2a48-431a-9b9b-1e1f39e21bcb" name="PROD"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="0673d776-234b-49c3-b3df-1beb8d117ebd" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getVehicleTitular" searchProperties="true"><con:settings/><con:testStep type="request" id="8efd1198-f7a4-4e32-af8a-60c5dba0c005" name="testcase05 - Prod - External Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>VehicleServiceHTTPBinding</con:interface><con:operation>getVehicleTitular</con:operation><con:request name="testcase05 - Prod - External Request" id="83d97b47-c2e1-4494-912b-05298775ca7f" outgoingWss="Outflow PROD"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus.sec.brussels/services/VehicleService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleTitularRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>0316381039</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <!--Optional:-->
+            <PlateNr>ASK050</PlateNr>
+            <LanguageCode>1</LanguageCode>
+         </v1:request>
+      </v1:getVehicleTitularRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="e51b2823-7bb3-4fc0-8b66-e4a09a29298c" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="ced03bad-9f53-46e0-a75e-ab53d23088a6" name="SOAP Response"/><con:assertion type="Schema Compliance" id="655362d2-34af-4351-8b20-ab6facd5cbdc" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/vehicleservice/getVehicleTitular"/></con:request></con:config></con:testStep><con:testStep type="request" id="4e0e366a-49be-4d80-937a-28e4bf5467ec" name="testcase05 - Prod - LB Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>VehicleServiceHTTPBinding</con:interface><con:operation>getVehicleTitular</con:operation><con:request name="testcase05 - Prod - LB Request" id="51552107-3bc1-4e14-9192-13f1011d526d" outgoingWss="Outflow PROD"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus-esb-sg.prd.srv.cirb.lan:8443/services/VehicleService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleTitularRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>0316381039</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <!--Optional:-->
+            <PlateNr>ASK050</PlateNr>
+            <LanguageCode>1</LanguageCode>
+         </v1:request>
+      </v1:getVehicleTitularRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="44a51dab-aff9-4b5e-b3fd-9417ea5380a9" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="8a6457a6-0764-4a43-b9de-1613498ca1b3" name="SOAP Response"/><con:assertion type="Schema Compliance" id="8e71f25a-e456-470c-8003-ccbb3c5c61cc" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/vehicleservice/getVehicleTitular"/></con:request></con:config></con:testStep><con:testStep type="request" id="37ae7093-4b55-4c9d-b785-7d58a6425b8c" name="testcase05 - Prod - Worker 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>VehicleServiceHTTPBinding</con:interface><con:operation>getVehicleTitular</con:operation><con:request name="testcase05 - Prod - Worker 1" id="2ee8d3e9-a7b7-45af-b618-ed14b4002e9d" outgoingWss="Outflow PROD"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.26.19:8443/services/VehicleService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleTitularRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>0316381039</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <!--Optional:-->
+            <PlateNr>ASK050</PlateNr>
+            <LanguageCode>1</LanguageCode>
+         </v1:request>
+      </v1:getVehicleTitularRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="3defa11a-6799-470e-be20-7da40059c646" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="a06ab1a8-65c2-4252-acdc-c409e6d3ecc8" name="SOAP Response"/><con:assertion type="Schema Compliance" id="62d48132-b03c-47fa-a37d-850b8870a8e6" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/vehicleservice/getVehicleTitular"/></con:request></con:config></con:testStep><con:testStep type="request" id="9d7ed1c0-beba-4bb2-89c4-3314d60c303e" name="testcase05 - Prod - Worker 2"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>VehicleServiceHTTPBinding</con:interface><con:operation>getVehicleTitular</con:operation><con:request name="testcase05 - Prod - Worker 2" id="eb4787f6-339e-4ecd-8267-6b72b5b05c93" outgoingWss="Outflow PROD"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.26.22:8443/services/VehicleService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleTitularRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>0316381039</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <!--Optional:-->
+            <PlateNr>ASK050</PlateNr>
+            <LanguageCode>1</LanguageCode>
+         </v1:request>
+      </v1:getVehicleTitularRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="5b4da5f2-91ad-40fe-a8e6-166083800e65" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="5d47cbe8-1197-41ca-8527-00f95b7c4635" name="SOAP Response"/><con:assertion type="Schema Compliance" id="c65375f0-edd5-41e7-8bbc-6ae233d5ed6c" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/vehicleservice/getVehicleTitular"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="34eee1c7-8525-4b91-a2c7-ba83d70b064a" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="getVehicleRegistration" searchProperties="true"><con:settings/><con:testStep type="request" id="089576f0-57ce-41e6-8ad4-72552b4a46db" name="testcase05 - Prod - External Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>VehicleServiceHTTPBinding</con:interface><con:operation>getVehicleRegistration</con:operation><con:request name="testcase05 - Prod - External Request" id="d3113dad-60de-4092-87d6-4b077595ae7b" outgoingWss="Outflow PROD"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus.sec.brussels/services/VehicleService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleRegistrationRequest>
+		<v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>0316381039</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <PlateNr>1HVL001</PlateNr>
+            <LanguageCode>2</LanguageCode>
+         </v1:request>
+      </v1:getVehicleRegistrationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="4ab90ddd-1021-4d56-9970-d860b8421711" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="3d27e5a1-c29b-4290-9ebc-f45234476033" name="SOAP Response"/><con:assertion type="Schema Compliance" id="2a1ebc56-4aa3-454a-be2e-10d40688803a" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/vehicleservice/getVehicleRegistration"/></con:request></con:config></con:testStep><con:testStep type="request" id="65c82b94-f6ab-4516-b27b-f2adac15325a" name="testcase05 - Prod - LB Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>VehicleServiceHTTPBinding</con:interface><con:operation>getVehicleRegistration</con:operation><con:request name="testcase05 - Prod - LB Request" id="f2dcc05f-1fd0-466f-b2e3-37626995f864" outgoingWss="Outflow PROD"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus-esb-sg.prd.srv.cirb.lan:8443/services/VehicleService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleRegistrationRequest>
+		<v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>0316381039</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <PlateNr>1HVL001</PlateNr>
+            <LanguageCode>2</LanguageCode>
+         </v1:request>
+      </v1:getVehicleRegistrationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="d7704f19-9bd8-4441-8755-649f4abc0c07" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="c64b1b83-1afa-4723-a0db-5c25f9b3c9a7" name="SOAP Response"/><con:assertion type="Schema Compliance" id="3295c2f0-a98f-4fb2-91b3-c030a96bacc7" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/vehicleservice/getVehicleRegistration"/></con:request></con:config></con:testStep><con:testStep type="request" id="ffca26d6-bc15-4bb6-a4bb-81409e71cbb6" name="testcase05 - Prod - Worker 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>VehicleServiceHTTPBinding</con:interface><con:operation>getVehicleRegistration</con:operation><con:request name="testcase05 - Prod - Worker 1" id="af6f1f30-d731-4b00-a988-a140723d7d68" outgoingWss="Outflow PROD"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.26.19:8443/services/VehicleService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleRegistrationRequest>
+		<v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>0316381039</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <PlateNr>1HVL001</PlateNr>
+            <LanguageCode>2</LanguageCode>
+         </v1:request>
+      </v1:getVehicleRegistrationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="18fda788-e018-4bd5-b402-431f1ea200d3" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="50a71ecd-2f5e-4cec-9440-d0d34ced7eac" name="SOAP Response"/><con:assertion type="Schema Compliance" id="589046ed-55ab-41c5-8fe2-3cd992f421d3" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/vehicleservice/getVehicleRegistration"/></con:request></con:config></con:testStep><con:testStep type="request" id="eff6f9e1-0bae-43e2-95a3-a41f04127162" name="testcase05 - Prod - Worker 2"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>VehicleServiceHTTPBinding</con:interface><con:operation>getVehicleRegistration</con:operation><con:request name="testcase05 - Prod - Worker 2" id="ae102756-743d-4ce8-b36f-3a8d37b4a0db" outgoingWss="Outflow PROD"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.26.22:8443/services/VehicleService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/vehicleservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:getVehicleRegistrationRequest>
+		<v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+            <v11:timestamp>${=new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS").format(new Date())}</v11:timestamp>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:consumerContext>
+            <v11:companyNumber>0316381039</v11:companyNumber>
+            <v11:companyId>21003</v11:companyId>
+         </v1:consumerContext>
+         <v1:request>
+            <PlateNr>1HVL001</PlateNr>
+            <LanguageCode>2</LanguageCode>
+         </v1:request>
+      </v1:getVehicleRegistrationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="508c2745-9ce3-41ea-b08c-cf44de1e15f5" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="f82831e8-09e9-494c-8874-6245a244f3df" name="SOAP Response"/><con:assertion type="Schema Compliance" id="c9f5fb4b-caf6-40f9-a368-6ca12386d1c3" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/vehicleservice/getVehicleRegistration"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/>
+  <con:wssContainer>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  <con:crypto><con:source>data/wso2/keystores/user-rajarshi.jks</con:source><con:password>test@fidus01</con:password><con:type>KEYSTORE</con:type></con:crypto><con:outgoing><con:name>Outflow DEV</con:name></con:outgoing><con:outgoing><con:name>Outflow TEST</con:name><con:entry type="Signature" username="testuser-test.fidus.brussels" password="test@fidus01"><con:configuration><crypto>user-rajarshi.jks</crypto><keyIdentifierType>3</keyIdentifierType><signatureAlgorithm/><signatureCanonicalization/><useSingleCert>true</useSingleCert><digestAlgorithm/><customTokenValueType/><customTokenId/></con:configuration></con:entry><con:entry type="Timestamp"><con:configuration><timeToLive>300000</timeToLive><strictTimestamp>true</strictTimestamp></con:configuration></con:entry></con:outgoing><con:outgoing><con:name>Outflow STAG</con:name></con:outgoing><con:outgoing><con:name>Outflow PROD</con:name></con:outgoing></con:wssContainer>
+  <con:oAuth2ProfileContainer/>
+  <con:oAuth1ProfileContainer/><con:sensitiveInformation/>
+</con:soapui-project>

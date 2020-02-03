@@ -1,0 +1,1495 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="11b404ed-5013-42b2-92a9-013432525abe" activeEnvironment="Default" name="Client-MessageForMeService-soapui-project" resourceRoot="" soapui-version="5.1.3" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="548e423b-90e0-4e19-b45f-01f908a20276" wsaVersion="NONE" name="MessageForMeServiceHTTPBinding" type="wsdl" bindingName="{http://fidus.brussels/service/messageformeservice/v1}MessageForMeServiceHTTPBinding" soapVersion="1_1" anonymous="optional" definition="file:/home/ebarbieux/Dev/fidus/messageformeservice/MessageForMeServiceGateway/src/main/resources/wsdl/messageForMeService/1.0.0/MessageForMeService_v1.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:/home/ebarbieux/Dev/fidus/messageformeservice/MessageForMeServiceGateway/src/main/resources/wsdl/messageForMeService/1.0.0/MessageForMeService_v1.wsdl"><con:part><con:url>file:/home/ebarbieux/Dev/fidus/messageformeservice/MessageForMeServiceGateway/src/main/resources/wsdl/messageForMeService/1.0.0/MessageForMeService_v1.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="MessageForMeService" targetNamespace="http://fidus.brussels/service/messageformeservice/v1" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:mes="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:tns="http://fidus.brussels/service/messageformeservice/v1">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://fidus.brussels/service/messageformeservice/v1" elementFormDefault="qualified">
+      <xsd:import namespace="http://fidus.brussels/service/messageformeservice/messages/v1" schemaLocation="messages/messageForMeServiceMessages_v1.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="sendNotificationRequestMessage">
+    <wsdl:part name="SendNotificationRequest" element="mes:sendNotificationRequest"/>
+  </wsdl:message>
+  <wsdl:message name="sendNotificationResponseMessage">
+    <wsdl:part name="SendNotificationResponse" element="mes:sendNotificationResponse"/>
+  </wsdl:message>
+  <wsdl:message name="receiveNotificationRequest">
+    <wsdl:part name="ReceiveNotificationRequest" element="mes:receiveNotificationRequest"/>
+  </wsdl:message>
+  <wsdl:message name="receiveNotificationResponse">
+    <wsdl:part name="ReceiveNotificationResponse" element="mes:receiveNotificationResponse"/>
+  </wsdl:message>
+  <wsdl:message name="deleteNotificationRequest">
+    <wsdl:part name="DeleteNotificationRequest" element="mes:deleteNotificationRequest"/>
+  </wsdl:message>
+  <wsdl:message name="deleteNotificationResponse">
+    <wsdl:part name="DeleteNotificationResponse" element="mes:deleteNotificationResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="SendNotificationPortType">
+    <wsdl:operation name="sendNotification">
+      <wsdl:input message="tns:sendNotificationRequest"/>
+      <wsdl:output message="tns:sendNotificationResponseMessage"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ReceiveNotificationPortType">
+    <wsdl:operation name="sendNotification">
+      <wsdl:input message="tns:sendNotificationRequestMessage"/>
+      <wsdl:output message="tns:sendNotificationResponseMessage"/>
+    </wsdl:operation>
+    <wsdl:operation name="receiveNotification">
+      <wsdl:input message="tns:receiveNotificationRequest"/>
+      <wsdl:output message="tns:receiveNotificationResponse"/>
+    </wsdl:operation>
+    <wsdl:operation name="deleteNotification">
+      <wsdl:input message="tns:deleteNotificationRequest"/>
+      <wsdl:output message="tns:deleteNotificationResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MessageForMeServiceHTTPBinding" type="tns:ReceiveNotificationPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="sendNotification">
+      <soap:operation soapAction="http://fidus.brussels/services/messageformeservice/sendNotification"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="receiveNotification">
+      <soap:operation soapAction="http://fidus.brussels/services/messageformeservice/receiveNotification"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteNotification">
+      <soap:operation soapAction="http://fidus.brussels/services/messageformeservice/deleteNotification"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MessageForMeService_v1">
+    <wsdl:port name="MessageForMeService_v1" binding="tns:MessageForMeServiceHTTPBinding">
+      <soap:address location="http://fidus.brussels/services/messageformeservice/v1"/>
+    </wsdl:port>
+  </wsdl:service>
+  <xsd:annotation>
+    <xsd:documentation>MessageForMeService WDSL v1.</xsd:documentation>
+  </xsd:annotation>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>file:/home/ebarbieux/Dev/fidus/messageformeservice/MessageForMeServiceGateway/src/main/resources/wsdl/messageForMeService/1.0.0/messages/messageForMeServiceMessages_v1.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://fidus.brussels/service/messageformeservice/messages/v1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:cme="http://fidus.brussels/type/common/messages/v1" xmlns:exc="http://fidus.brussels/type/common/exceptions/v1" xmlns:tns="http://fidus.brussels/service/messageformeservice/messages/v1">
+  <xsd:import namespace="http://fidus.brussels/type/common/messages/v1" schemaLocation="baseMessageTypes_v1.xsd"/>
+  <xsd:import namespace="http://fidus.brussels/type/common/exceptions/v1" schemaLocation="exceptionTypes_v1.xsd"/>
+  <xsd:simpleType name="ConsumerId">
+    <xsd:annotation>
+      <xsd:documentation>The consumer identification Id</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1"/>
+      <xsd:maxLength value="64"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="TopicIdType">
+    <xsd:annotation>
+      <xsd:documentation>The topic identification Id</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1"/>
+      <xsd:maxLength value="64"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="NotificationId">
+    <xsd:annotation>
+      <xsd:documentation>The notification identification Id</xsd:documentation>
+    </xsd:annotation>
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1"/>
+      <xsd:maxLength value="64"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="statusCode">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="OK"/>
+      <xsd:enumeration value="NOK"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="XmlDataType" mixed="true">
+    <xsd:annotation>
+      <xsd:documentation>Xml data content</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:any minOccurs="0" processContents="lax" namespace="##any"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="NotificationType">
+    <xsd:sequence>
+      <xsd:element name="notificationId" type="tns:NotificationId"/>
+      <xsd:element name="data" type="tns:XmlDataType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="NotificationList">
+    <xsd:sequence>
+      <xsd:element name="notificationId" type="tns:NotificationId" minOccurs="1" maxOccurs="50"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SendNotificationRequestType">
+    <xsd:annotation>
+      <xsd:documentation>Send a notification</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="consumerId" type="tns:ConsumerId"/>
+      <xsd:element name="topicId" type="tns:TopicIdType"/>
+      <xsd:element name="data" type="tns:XmlDataType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ReceiveNotificationRequestType">
+    <xsd:annotation>
+      <xsd:documentation>Receive a notification</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="topicId" type="tns:TopicIdType"/>
+      <xsd:element name="waitTimeSeconds" type="tns:waitTimeSeconds" minOccurs="1" maxOccurs="1" nillable="false"/>
+      <xsd:element name="maxNumberOfNotifications" type="tns:maxNumberOfNotifications" minOccurs="1" maxOccurs="1"/>
+      <xsd:element name="autoDelete" type="xsd:boolean" default="false"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="waitTimeSeconds">
+    <xsd:restriction base="xsd:nonNegativeInteger">
+      <xsd:maxInclusive value="60"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="maxNumberOfNotifications">
+    <xsd:restriction base="xsd:nonNegativeInteger">
+      <xsd:maxInclusive value="50"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="DeleteNotificationRequestType">
+    <xsd:annotation>
+      <xsd:documentation>Delete notifications</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="topicId" type="tns:TopicIdType"/>
+      <xsd:element name="notificationIds" type="tns:NotificationList"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--Request SendMessageForMeServiceRequestType definition-->
+  <xsd:complexType name="SendMessageForMeServiceRequestType">
+    <xsd:sequence>
+      <xsd:element name="messageContext" type="cme:RequestMessageContextType"/>
+      <xsd:element name="legalContext" type="cme:LegalContextType"/>
+      <xsd:element name="request" type="tns:SendNotificationRequestType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--Request SendMessageForMeServiceResponseType definition-->
+  <xsd:complexType name="SendMessageForMeServiceResponseType">
+    <xsd:sequence>
+      <xsd:element name="messageContext" type="cme:ResponseMessageContextType"/>
+      <xsd:element name="responses" type="tns:SendNotificationResponsesType" minOccurs="0"/>
+      <xsd:element name="exceptions" type="exc:ExceptionsType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Technical errors that occur when processing the message context e.g. insufficient rights.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--Request ReceiveMessageForMeServiceRequestType definition-->
+  <xsd:complexType name="ReceiveMessageForMeServiceRequestType">
+    <xsd:sequence>
+      <xsd:element name="messageContext" type="cme:RequestMessageContextType"/>
+      <xsd:element name="legalContext" type="cme:LegalContextType"/>
+      <xsd:element name="request" type="tns:ReceiveNotificationRequestType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--Request ReceiveMessageForMeServiceResponseType definition-->
+  <xsd:complexType name="ReceiveMessageForMeServiceResponseType">
+    <xsd:sequence>
+      <xsd:element name="messageContext" type="cme:ResponseMessageContextType"/>
+      <xsd:element name="responses" type="tns:ReceiveNotificationResponseType"/>
+      <xsd:element name="exceptions" type="exc:ExceptionsType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Technical errors that occur when processing the message context e.g. insufficient rights.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--Request DeleteMessageForMeServiceRequestType definition-->
+  <xsd:complexType name="DeleteMessageForMeServiceRequestType">
+    <xsd:sequence>
+      <xsd:element name="messageContext" type="cme:RequestMessageContextType"/>
+      <xsd:element name="legalContext" type="cme:LegalContextType"/>
+      <xsd:element name="request" type="tns:DeleteNotificationRequestType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--Request DeleteMessageForMeServiceResponseType definition-->
+  <xsd:complexType name="DeleteMessageForMeServiceResponseType">
+    <xsd:sequence>
+      <xsd:element name="messageContext" type="cme:ResponseMessageContextType"/>
+      <xsd:element name="responses" type="tns:DeleteNotificationResponsesType"/>
+      <xsd:element name="exceptions" type="exc:ExceptionsType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Technical errors that occur when processing the message context e.g. insufficient rights.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="SendNotificationResponsesType">
+    <xsd:sequence>
+      <xsd:element name="notificationId" type="tns:NotificationId"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ReceiveNotificationResponseType">
+    <xsd:sequence>
+      <xsd:element name="notification" minOccurs="0" maxOccurs="unbounded" type="tns:NotificationType"/>
+      <xsd:element name="notificationRemaining" minOccurs="1" maxOccurs="1" type="xsd:boolean"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="DeleteNotificationResponsesType">
+    <xsd:sequence>
+      <xsd:element name="status" minOccurs="1" maxOccurs="1" type="tns:statusCode"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--Element of the request and the response-->
+  <xsd:element name="sendNotificationRequest" type="tns:SendMessageForMeServiceRequestType"/>
+  <xsd:element name="sendNotificationResponse" type="tns:SendMessageForMeServiceResponseType"/>
+  <xsd:element name="receiveNotificationRequest" type="tns:ReceiveMessageForMeServiceRequestType"/>
+  <xsd:element name="receiveNotificationResponse" type="tns:ReceiveMessageForMeServiceResponseType"/>
+  <xsd:element name="deleteNotificationRequest" type="tns:DeleteMessageForMeServiceRequestType"/>
+  <xsd:element name="deleteNotificationResponse" type="tns:DeleteMessageForMeServiceResponseType"/>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:/home/ebarbieux/Dev/fidus/messageformeservice/MessageForMeServiceGateway/src/main/resources/wsdl/messageForMeService/1.0.0/messages/baseMessageTypes_v1.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://fidus.brussels/type/common/messages/v1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://fidus.brussels/type/common/messages/v1">
+  <!--Unformatted message Id-->
+  <xsd:simpleType name="MessageIdType">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1"/>
+      <xsd:maxLength value="64"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!--National Number of the person. Format depending on the Register-->
+  <xsd:simpleType name="PersonNumberType">
+    <xsd:restriction base="xsd:string">
+      <xsd:pattern value="[0-9][0-9](([0][0-9])|([1][0-2]))(([0-2][0-9])|([3][0-1]))(([0-9]{2}[1-9])|([0-9][1-9][0-9])|([1-9][0-9]{2}))(([0-8][0-9])|([9][0-7]))">
+        <xsd:annotation>
+          <xsd:documentation>National Register format</xsd:documentation>
+        </xsd:annotation>
+      </xsd:pattern>
+      <xsd:pattern value="[0-9][0-9](([2][0-9])|([3][0-2]))(([0-2][0-9])|([3][0-1]))[0-9]{3}(([0-8][0-9])|([9][0-7]))">
+        <xsd:annotation>
+          <xsd:documentation>CBSS Register format: Bis Register</xsd:documentation>
+        </xsd:annotation>
+      </xsd:pattern>
+      <xsd:pattern value="[0-9][0-9](([4][0-9])|([5][0-2]))(([0-2][0-9])|([3][0-1]))[0-9]{3}(([0-8][0-9])|([9][0-7]))">
+        <xsd:annotation>
+          <xsd:documentation>CBSS Register format: Ter Register</xsd:documentation>
+        </xsd:annotation>
+      </xsd:pattern>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <!--Request message context-->
+  <xsd:complexType name="RequestMessageContextType">
+    <xsd:annotation>
+      <xsd:documentation>Message context block generated by the consumer.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="messageId" type="tns:MessageIdType">
+        <xsd:annotation>
+          <xsd:documentation>Consumer must assign their own MessageId reference for the request.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="timestamp" type="xsd:dateTime" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Timestamp when client sent request.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--Response message context-->
+  <xsd:complexType name="ResponseMessageContextType">
+    <xsd:annotation>
+      <xsd:documentation>MessageContext block generated by fidus.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="messageId" type="tns:MessageIdType">
+        <xsd:annotation>
+          <xsd:documentation>A unique identifier generated by fidus.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="transactionId" type="tns:MessageIdType">
+        <xsd:annotation>
+          <xsd:documentation>A unique ID returned to the client for tracing purposes.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="relatesTo" type="tns:MessageIdType" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Optional field. The unique id of a previous batch file in this exchange Only used for responses.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="timestamp" type="xsd:dateTime" minOccurs="0">
+        <xsd:annotation>
+          <xsd:documentation>Time reply sent by fidus.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <!--Legal Context : the finality of the Privacy Commission-->
+  <xsd:simpleType name="LegalContextType">
+    <xsd:restriction base="xsd:string">
+      <xsd:minLength value="1"/>
+      <xsd:maxLength value="64"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="UserContextType">
+    <xsd:annotation>
+      <xsd:documentation>The user context defines information regarding the actual user performing a request.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:sequence>
+      <xsd:element name="language" type="xsd:language" nillable="true">
+        <xsd:annotation>
+          <xsd:documentation>The preferred language of the actual user performing the request.
+						This influences the language in which response elements are cast.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part><con:part><con:url>file:/home/ebarbieux/Dev/fidus/messageformeservice/MessageForMeServiceGateway/src/main/resources/wsdl/messageForMeService/1.0.0/messages/exceptionTypes_v1.xsd</con:url><con:content><![CDATA[<xsd:schema targetNamespace="http://fidus.brussels/type/common/exceptions/v1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://fidus.brussels/type/common/exceptions/v1">
+  <!--Basic error typed-->
+  <xsd:complexType name="ExceptionsType">
+    <xsd:sequence>
+      <xsd:element name="exception" type="tns:ExceptionType" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ExceptionType">
+    <xsd:sequence>
+      <xsd:element name="type" type="tns:ExceptionClassType"/>
+      <xsd:element name="code" type="tns:ExceptionCodeType"/>
+      <xsd:element name="source" type="tns:ExceptionSourceType"/>
+      <xsd:element name="description" type="tns:ExceptionDescriptionType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:simpleType name="ExceptionClassType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="ERROR"/>
+      <xsd:enumeration value="WARNING"/>
+      <xsd:enumeration value="INFO"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="ExceptionCodeType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="20"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="ExceptionSourceType">
+    <xsd:restriction base="xsd:string">
+      <xsd:maxLength value="20"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="ExceptionDescriptionType">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+</xsd:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://fidus.brussels/services/messageformeservice/v1</con:endpoint></con:endpoints><con:operation id="afcad64e-a1e0-482a-969f-892b627e7b0c" isOneWay="false" action="http://fidus.brussels/services/messageformeservice/sendNotification" name="sendNotification" bindingOperationName="sendNotification" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0f12defc-3948-46ab-a16f-44f66b4a715c" name="1 - Local - Request - OK" outgoingWss="Outflow DEV" incomingWss="Inflow DEV"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://localhost:8243/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:sendNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:consumerId>CIRB-CIBG</v1:consumerId>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:data>one data</v1:data>
+         </v1:request>
+      </v1:sendNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getDomain"/><con:wsrmConfig version="1.2"/></con:call><con:call id="162a7cfc-6c78-4326-bf6e-2d5603ead13f" name="3 - Test - LB - Request" outgoingWss="Outflow TEST"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://esb-security-gw.sta.srv.cirb.lan:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:sendNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:consumerId>FIDUS-TESTUSER</v1:consumerId>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:data><test>test</test></v1:data>
+         </v1:request>
+      </v1:sendNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getDomain"/><con:wsrmConfig version="1.2"/></con:call><con:call id="dceea48e-a87f-4e17-9363-a428664cf44e" name="4 - Staging - LB - Request" incomingWss="Inflow STAGING" outgoingWss="Outflow STAGING"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus-esb-sg.sta.srv.cirb.lan:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:sendNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:consumerId>FIDUS-TESTUSER</v1:consumerId>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:data><test>test</test></v1:data>
+         </v1:request>
+      </v1:sendNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getDomain"/><con:wsrmConfig version="1.2"/></con:call><con:call id="001cf2dc-2ec2-4409-a5db-4ef90200d5d6" name="2 - Dev - Request - OK" outgoingWss="Outflow DEV" incomingWss="Inflow DEV"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.36.61:8243/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:sendNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:consumerId>CIRB-CIBG</v1:consumerId>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:data>one data</v1:data>
+         </v1:request>
+      </v1:sendNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getDomain"/><con:wsrmConfig version="1.2"/></con:call><con:call id="fd82976b-792d-4ca5-a0aa-3b38caa69e8e" name="5 - Prod - External - Request" incomingWss="Inflow PROD" outgoingWss="Outflow PROD"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus.sec.brussels/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:sendNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:consumerId>FIDUS-TESTUSER</v1:consumerId>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:data><test>test</test></v1:data>
+         </v1:request>
+      </v1:sendNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getDomain"/><con:wsrmConfig version="1.2"/></con:call><con:call id="89f2e7a2-5b2c-42f0-b173-5923c915539a" name="3 - Test - Worker1 - Request" outgoingWss="Outflow TEST" incomingWss="Inflow TEST"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.22.53:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:sendNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:consumerId>FIDUS-TESTUSER</v1:consumerId>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:data><test>test</test></v1:data>
+         </v1:request>
+      </v1:sendNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getDomain"/><con:wsrmConfig version="1.2"/></con:call><con:call id="7bd6e7e5-47a9-430b-91c1-0a22d40e70d4" name="3 - Test - Worker2 - Request" outgoingWss="Outflow TEST" incomingWss="Inflow TEST"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.22.54:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:sendNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:consumerId>FIDUS-TESTUSER</v1:consumerId>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:data><test>test</test></v1:data>
+         </v1:request>
+      </v1:sendNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getDomain"/><con:wsrmConfig version="1.2"/></con:call><con:call id="35eb26a3-7ca2-4f97-87cc-27f111258f46" name="4 - Staging - Worker1 - Request" incomingWss="Inflow STAGING" outgoingWss="Outflow STAGING"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.16:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:sendNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:consumerId>FIDUS-TESTUSER</v1:consumerId>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:data><test>test</test></v1:data>
+         </v1:request>
+      </v1:sendNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getDomain"/><con:wsrmConfig version="1.2"/></con:call><con:call id="1c96a159-0bf2-410e-8c4c-dcb643dc02ba" name="4 - Staging - Worker2 - Request" incomingWss="Inflow STAGING" outgoingWss="Outflow STAGING"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.17:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:sendNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:consumerId>FIDUS-TESTUSER</v1:consumerId>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:data><test>test</test></v1:data>
+         </v1:request>
+      </v1:sendNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getDomain"/><con:wsrmConfig version="1.2"/></con:call><con:call id="37e20322-b450-4958-bbaa-24de1819f51f" name="5 - Prod - LB - Request" incomingWss="Inflow PROD" outgoingWss="Outflow PROD"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus-esb-sg.prd.srv.cirb.lan:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:sendNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:consumerId>FIDUS-TESTUSER</v1:consumerId>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:data><test>test</test></v1:data>
+         </v1:request>
+      </v1:sendNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getDomain"/><con:wsrmConfig version="1.2"/></con:call><con:call id="35c05f2f-71c9-42ab-9302-0293ddf7dcc1" name="5 - Prod - Worker1 - Request" incomingWss="Inflow PROD" outgoingWss="Outflow PROD"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.26.22:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:sendNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:consumerId>FIDUS-TESTUSER</v1:consumerId>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:data><test>test</test></v1:data>
+         </v1:request>
+      </v1:sendNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getDomain"/><con:wsrmConfig version="1.2"/></con:call><con:call id="49868844-6257-4d3e-bf80-b9ebd1d42fd8" name="5 - Prod - Worker2 - Request" incomingWss="Inflow PROD" outgoingWss="Outflow PROD"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.26.19:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:sendNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:consumerId>FIDUS-TESTUSER</v1:consumerId>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:data><test>test</test></v1:data>
+         </v1:request>
+      </v1:sendNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getDomain"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="1ada035c-f750-459e-a201-428e5fb2b469" isOneWay="false" action="http://fidus.brussels/services/messageformeservice/receiveNotification" name="receiveNotification" bindingOperationName="receiveNotification" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0bde390e-f55b-4b7f-aedb-4f7b85f196c9" name="1 - Local - Request - OK" outgoingWss="Outflow DEV" incomingWss="Inflow DEV"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://localhost:8243/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:receiveNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:waitTimeSeconds>10</v1:waitTimeSeconds>
+            <v1:maxNumberOfNotifications>10</v1:maxNumberOfNotifications>
+            <v1:autoDelete>false</v1:autoDelete>
+         </v1:request>
+      </v1:receiveNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getOrganisationChildNodes"/><con:wsrmConfig version="1.2"/></con:call><con:call id="eba2e52f-9b3e-43c5-b703-ebcc56afdb97" name="2 - Dev - Request - OK" incomingWss="Inflow DEV" outgoingWss="Outflow DEV"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.36.61:8243/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:receiveNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:waitTimeSeconds>10</v1:waitTimeSeconds>
+            <v1:maxNumberOfNotifications>10</v1:maxNumberOfNotifications>
+            <v1:autoDelete>false</v1:autoDelete>
+         </v1:request>
+      </v1:receiveNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getOrganisationChildNodes"/><con:wsrmConfig version="1.2"/></con:call><con:call id="d7988042-f538-4a25-b99b-e9c5ecfab90c" name="3 - Test - LB - Request" outgoingWss="Outflow TEST" incomingWss="Inflow TEST"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://esb-security-gw.sta.srv.cirb.lan:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:receiveNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:waitTimeSeconds>10</v1:waitTimeSeconds>
+            <v1:maxNumberOfNotifications>10</v1:maxNumberOfNotifications>
+            <v1:autoDelete>false</v1:autoDelete>
+         </v1:request>
+      </v1:receiveNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getOrganisationChildNodes"/><con:wsrmConfig version="1.2"/></con:call><con:call id="361adb88-ddeb-431b-804d-9d0b67ea18ba" name="4 - Staging - LB - Request" incomingWss="Inflow STAGING" outgoingWss="Outflow STAGING"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus-esb-sg.sta.srv.cirb.lan:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:receiveNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:waitTimeSeconds>10</v1:waitTimeSeconds>
+            <v1:maxNumberOfNotifications>10</v1:maxNumberOfNotifications>
+            <v1:autoDelete>false</v1:autoDelete>
+         </v1:request>
+      </v1:receiveNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getOrganisationChildNodes"/><con:wsrmConfig version="1.2"/></con:call><con:call id="3653606e-ac74-4d28-9f57-25a537e0d142" name="5 - Prod - External - Request" incomingWss="Inflow PROD" outgoingWss="Outflow PROD"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus.sec.brussels/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:receiveNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:waitTimeSeconds>10</v1:waitTimeSeconds>
+            <v1:maxNumberOfNotifications>10</v1:maxNumberOfNotifications>
+            <v1:autoDelete>false</v1:autoDelete>
+         </v1:request>
+      </v1:receiveNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getOrganisationChildNodes"/><con:wsrmConfig version="1.2"/></con:call><con:call id="71a75f70-b66d-43a5-8c0f-a9b2b996efd6" name="3 - Test - Worker1 - Request" incomingWss="Inflow TEST" outgoingWss="Outflow TEST"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.22.53:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:receiveNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:waitTimeSeconds>10</v1:waitTimeSeconds>
+            <v1:maxNumberOfNotifications>10</v1:maxNumberOfNotifications>
+            <v1:autoDelete>false</v1:autoDelete>
+         </v1:request>
+      </v1:receiveNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getOrganisationChildNodes"/><con:wsrmConfig version="1.2"/></con:call><con:call id="481b251d-b566-4b08-aea6-d4f44e773461" name="3 - Test - Worker2 - Request" incomingWss="Inflow TEST" outgoingWss="Outflow TEST"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.22.54:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:receiveNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:waitTimeSeconds>10</v1:waitTimeSeconds>
+            <v1:maxNumberOfNotifications>10</v1:maxNumberOfNotifications>
+            <v1:autoDelete>false</v1:autoDelete>
+         </v1:request>
+      </v1:receiveNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getOrganisationChildNodes"/><con:wsrmConfig version="1.2"/></con:call><con:call id="0921d4fe-5316-41a3-90d9-4c1e442ef5ea" name="4 - Staging - Worker1 - Request" incomingWss="Inflow STAGING" outgoingWss="Outflow STAGING"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.16:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:receiveNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:waitTimeSeconds>10</v1:waitTimeSeconds>
+            <v1:maxNumberOfNotifications>10</v1:maxNumberOfNotifications>
+            <v1:autoDelete>false</v1:autoDelete>
+         </v1:request>
+      </v1:receiveNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getOrganisationChildNodes"/><con:wsrmConfig version="1.2"/></con:call><con:call id="6062bc62-0548-479c-8ca8-47164dad11fb" name="4 - Staging - Worker2 - Request" incomingWss="Inflow STAGING" outgoingWss="Outflow STAGING"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.17:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:receiveNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:waitTimeSeconds>10</v1:waitTimeSeconds>
+            <v1:maxNumberOfNotifications>10</v1:maxNumberOfNotifications>
+            <v1:autoDelete>false</v1:autoDelete>
+         </v1:request>
+      </v1:receiveNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getOrganisationChildNodes"/><con:wsrmConfig version="1.2"/></con:call><con:call id="4582e159-15cd-4905-a4e9-339b9c4ac4d0" name="5 - Prod - LB - Request" incomingWss="Inflow PROD" outgoingWss="Outflow PROD"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus-esb-sg.prd.srv.cirb.lan:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:receiveNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:waitTimeSeconds>10</v1:waitTimeSeconds>
+            <v1:maxNumberOfNotifications>10</v1:maxNumberOfNotifications>
+            <v1:autoDelete>false</v1:autoDelete>
+         </v1:request>
+      </v1:receiveNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getOrganisationChildNodes"/><con:wsrmConfig version="1.2"/></con:call><con:call id="515addc6-997a-4a6a-aa8c-449cbc184e2c" name="5 - Prod - Worker1 - Request" incomingWss="Inflow PROD" outgoingWss="Outflow PROD"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.26.22:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:receiveNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:waitTimeSeconds>10</v1:waitTimeSeconds>
+            <v1:maxNumberOfNotifications>10</v1:maxNumberOfNotifications>
+            <v1:autoDelete>false</v1:autoDelete>
+         </v1:request>
+      </v1:receiveNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getOrganisationChildNodes"/><con:wsrmConfig version="1.2"/></con:call><con:call id="18a8a466-7266-4883-9a71-2c9e8b94b94a" name="5 - Prod - Worker2 - Request" incomingWss="Inflow PROD" outgoingWss="Outflow PROD"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.26.19:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:receiveNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:waitTimeSeconds>10</v1:waitTimeSeconds>
+            <v1:maxNumberOfNotifications>10</v1:maxNumberOfNotifications>
+            <v1:autoDelete>false</v1:autoDelete>
+         </v1:request>
+      </v1:receiveNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getOrganisationChildNodes"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="e1866b8c-dca5-4e06-9350-a0f094f4ecc3" isOneWay="false" action="http://fidus.brussels/services/messageformeservice/deleteNotification" name="deleteNotification" bindingOperationName="deleteNotification" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e28ff8d5-fbd8-41a8-8f84-68148c6fcfb7" name="1 - Local - Request - OK" outgoingWss="Outflow DEV" incomingWss="Inflow DEV"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://localhost:8243/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:deleteNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:notificationIds>
+               <!--1 to 50 repetitions:-->
+               <v1:notificationId>d99920ec-e73f-4ea3-89ee-4943ab152092</v1:notificationId>
+            </v1:notificationIds>
+         </v1:request>
+      </v1:deleteNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getOrganisationParentNodes"/><con:wsrmConfig version="1.2"/></con:call><con:call id="26e7385f-7455-463b-82d5-f08309a00b91" name="2 - Dev - Request - OK" incomingWss="Inflow DEV" outgoingWss="Outflow DEV"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.36.61:8243/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:deleteNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:notificationIds>
+               <!--1 to 50 repetitions:-->
+               <v1:notificationId>d99920ec-e73f-4ea3-89ee-4943ab152092</v1:notificationId>
+            </v1:notificationIds>
+         </v1:request>
+      </v1:deleteNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getOrganisationParentNodes"/><con:wsrmConfig version="1.2"/></con:call><con:call id="5b54fcb3-632b-4f86-90bf-49e4f5c5b0cf" name="3 - Test - LB - Request" outgoingWss="Outflow TEST" incomingWss="Inflow TEST"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://esb-security-gw.sta.srv.cirb.lan:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:deleteNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:notificationIds>
+               <!--1 to 50 repetitions:-->
+               <v1:notificationId>d99920ec-e73f-4ea3-89ee-4943ab152092</v1:notificationId>
+            </v1:notificationIds>
+         </v1:request>
+      </v1:deleteNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getOrganisationParentNodes"/><con:wsrmConfig version="1.2"/></con:call><con:call id="52c647c2-0da2-484a-af9f-413cfd3a3fbe" name="4 - Staging - LB - Request" incomingWss="Inflow STAGING" outgoingWss="Outflow STAGING"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus-esb-sg.sta.srv.cirb.lan:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:deleteNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:notificationIds>
+               <!--1 to 50 repetitions:-->
+               <v1:notificationId>d99920ec-e73f-4ea3-89ee-4943ab152092</v1:notificationId>
+            </v1:notificationIds>
+         </v1:request>
+      </v1:deleteNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getOrganisationParentNodes"/><con:wsrmConfig version="1.2"/></con:call><con:call id="8e9307a6-6c44-4809-bfb5-409c5394e29b" name="5 - Prod - External - Request" incomingWss="Inflow PROD" outgoingWss="Outflow PROD"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus.sec.brussels/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:deleteNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:notificationIds>
+               <!--1 to 50 repetitions:-->
+               <v1:notificationId>d99920ec-e73f-4ea3-89ee-4943ab152092</v1:notificationId>
+            </v1:notificationIds>
+         </v1:request>
+      </v1:deleteNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getOrganisationParentNodes"/><con:wsrmConfig version="1.2"/></con:call><con:call id="bbd26555-c193-423b-99af-27e31472216c" name="3 - Test - Worker1 - Request" outgoingWss="Outflow TEST" incomingWss="Inflow TEST"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.22.53:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:deleteNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:notificationIds>
+               <!--1 to 50 repetitions:-->
+               <v1:notificationId>d99920ec-e73f-4ea3-89ee-4943ab152092</v1:notificationId>
+            </v1:notificationIds>
+         </v1:request>
+      </v1:deleteNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getOrganisationParentNodes"/><con:wsrmConfig version="1.2"/></con:call><con:call id="34f363e1-f424-47ab-8ba5-3c4e36cf2412" name="3 - Test - Worker2 - Request" outgoingWss="Outflow TEST" incomingWss="Inflow TEST"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.22.54:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:deleteNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:notificationIds>
+               <!--1 to 50 repetitions:-->
+               <v1:notificationId>d99920ec-e73f-4ea3-89ee-4943ab152092</v1:notificationId>
+            </v1:notificationIds>
+         </v1:request>
+      </v1:deleteNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getOrganisationParentNodes"/><con:wsrmConfig version="1.2"/></con:call><con:call id="22b13242-19e0-43c0-ba42-2d64bb8c1fce" name="4 - Staging - Worker1 - Request" incomingWss="Inflow STAGING" outgoingWss="Outflow STAGING"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.16:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:deleteNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:notificationIds>
+               <!--1 to 50 repetitions:-->
+               <v1:notificationId>d99920ec-e73f-4ea3-89ee-4943ab152092</v1:notificationId>
+            </v1:notificationIds>
+         </v1:request>
+      </v1:deleteNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getOrganisationParentNodes"/><con:wsrmConfig version="1.2"/></con:call><con:call id="ecdad1d7-a620-4f85-baea-cbd4648019fe" name="4 - Staging - Worker2 - Request" incomingWss="Inflow STAGING" outgoingWss="Outflow STAGING"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.17:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:deleteNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:notificationIds>
+               <!--1 to 50 repetitions:-->
+               <v1:notificationId>d99920ec-e73f-4ea3-89ee-4943ab152092</v1:notificationId>
+            </v1:notificationIds>
+         </v1:request>
+      </v1:deleteNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getOrganisationParentNodes"/><con:wsrmConfig version="1.2"/></con:call><con:call id="f44ce7cc-4ab6-44f6-ba07-c67facdd5f96" name="5 - Prod - LB - Request" incomingWss="Inflow PROD" outgoingWss="Outflow PROD"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus-esb-sg.prd.srv.cirb.lan:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:deleteNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:notificationIds>
+               <!--1 to 50 repetitions:-->
+               <v1:notificationId>d99920ec-e73f-4ea3-89ee-4943ab152092</v1:notificationId>
+            </v1:notificationIds>
+         </v1:request>
+      </v1:deleteNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getOrganisationParentNodes"/><con:wsrmConfig version="1.2"/></con:call><con:call id="45e75470-6021-4ee3-b243-87bc1de6f55c" name="5 - Prod - Worker1 - Request" incomingWss="Inflow PROD" outgoingWss="Outflow PROD"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.26.22:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:deleteNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:notificationIds>
+               <!--1 to 50 repetitions:-->
+               <v1:notificationId>d99920ec-e73f-4ea3-89ee-4943ab152092</v1:notificationId>
+            </v1:notificationIds>
+         </v1:request>
+      </v1:deleteNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getOrganisationParentNodes"/><con:wsrmConfig version="1.2"/></con:call><con:call id="e72117d7-a6e2-4550-85b9-95ccbd5de9e0" name="5 - Prod - Worker2 - Request" incomingWss="Inflow PROD" outgoingWss="Outflow PROD"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.26.19:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:deleteNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:notificationIds>
+               <!--1 to 50 repetitions:-->
+               <v1:notificationId>d99920ec-e73f-4ea3-89ee-4943ab152092</v1:notificationId>
+            </v1:notificationIds>
+         </v1:request>
+      </v1:deleteNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://fidus.brussels/services/accessmanagerservice/getOrganisationParentNodes"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="6ef6ec65-961f-416f-b8d6-0c9921489fd1" name="TEST"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="52017c5d-2b17-4575-821f-f0f9915c7439" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="sendNotification" searchProperties="true"><con:settings/><con:testStep type="request" id="4e68fc59-31a7-4915-b18f-053043a3daa7" name="testcase3 - Test - LB - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MessageForMeServiceHTTPBinding</con:interface><con:operation>sendNotification</con:operation><con:request name="testcase3 - Test - LB - Request" id="48eb04ba-6419-41b4-b083-f084ca521636" outgoingWss="Outflow TEST"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://esb-security-gw.sta.srv.cirb.lan:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:sendNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:consumerId>FIDUS-TESTUSER</v1:consumerId>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:data><test>test</test></v1:data>
+         </v1:request>
+      </v1:sendNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="6c45c190-be4d-4a31-8e02-0277c13a665d" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="80f74b16-2343-4b00-a97e-b91215043611" name="SOAP Response"/><con:assertion type="Schema Compliance" id="f2311012-fd0a-4e41-8e48-735535feb7f3" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/messageformeservice/sendNotification"/></con:request></con:config></con:testStep><con:testStep type="request" id="fef8ddb7-b10e-4492-ae75-dbd8571243b9" name="testcase3 - Test - Worker1 - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MessageForMeServiceHTTPBinding</con:interface><con:operation>sendNotification</con:operation><con:request name="testcase3 - Test - Worker1 - Request" id="38e3d66f-19bc-4bbf-a91c-3ba790486b4d" outgoingWss="Outflow TEST"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.45:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:sendNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:consumerId>FIDUS-TESTUSER</v1:consumerId>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:data><test>test</test></v1:data>
+         </v1:request>
+      </v1:sendNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="67feed84-d502-436d-8e3c-44e9975d58bd" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="972cdc0b-534a-4953-878f-858f863f104f" name="SOAP Response"/><con:assertion type="Schema Compliance" id="c2e3edc9-4c8d-49d5-94b6-6ac435183851" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/messageformeservice/sendNotification"/></con:request></con:config></con:testStep><con:testStep type="request" id="bfc22a5f-46bb-4efd-a3e1-32de8eded348" name="testcase3 - Test - Worker2 - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MessageForMeServiceHTTPBinding</con:interface><con:operation>sendNotification</con:operation><con:request name="testcase3 - Test - Worker2 - Request" id="0a66e654-9e0e-4856-9a87-013222ad5186" outgoingWss="Outflow TEST"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.51:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:sendNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:consumerId>FIDUS-TESTUSER</v1:consumerId>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:data><test>test</test></v1:data>
+         </v1:request>
+      </v1:sendNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="b6e43fce-f3ed-4465-9549-a3d823850290" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="11955769-aebd-4eb2-a93d-f15101ee1384" name="SOAP Response"/><con:assertion type="Schema Compliance" id="125d1193-2c39-4e82-bbe9-7c33322ecbd3" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/messageformeservice/sendNotification"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="85272c02-0b3e-438e-930e-09d8e0ddb5c6" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="receiveNotification" searchProperties="true"><con:settings/><con:testStep type="request" id="9bc58f52-779e-4ae6-81e2-5ae052a4329b" name="testcase3 - Test - LB - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MessageForMeServiceHTTPBinding</con:interface><con:operation>receiveNotification</con:operation><con:request name="testcase3 - Test - LB - Request" id="9514adad-0959-4900-983e-cbd1479b96be" outgoingWss="Outflow TEST"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://esb-security-gw.sta.srv.cirb.lan:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:receiveNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:waitTimeSeconds>10</v1:waitTimeSeconds>
+            <v1:maxNumberOfNotifications>10</v1:maxNumberOfNotifications>
+            <v1:autoDelete>false</v1:autoDelete>
+         </v1:request>
+      </v1:receiveNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="7d49c2ab-0196-4d07-9e58-7663945ba732" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="0ef70aff-af1b-4b9c-82c2-5c364b18fec9" name="SOAP Response"/><con:assertion type="Schema Compliance" id="df668092-f319-4700-9ab5-852ebb54d5dc" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/messageformeservice/receiveNotification"/></con:request></con:config></con:testStep><con:testStep type="request" id="4436b8c7-2f07-470f-a5d6-1417957190d9" name="testcase3 - Test - Worker1 - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MessageForMeServiceHTTPBinding</con:interface><con:operation>receiveNotification</con:operation><con:request name="testcase3 - Test - Worker1 - Request" id="0fbd0f66-e8e6-45ba-adde-97d4a2b5bf76" outgoingWss="Outflow TEST"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.45:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:receiveNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:waitTimeSeconds>10</v1:waitTimeSeconds>
+            <v1:maxNumberOfNotifications>10</v1:maxNumberOfNotifications>
+            <v1:autoDelete>false</v1:autoDelete>
+         </v1:request>
+      </v1:receiveNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="3bc4e308-b9c9-4a95-a6ec-6a17fcf13f8d" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="7a79efaf-9241-454d-bff6-9bc98c99da17" name="SOAP Response"/><con:assertion type="Schema Compliance" id="fab94adc-1ce2-4ab7-81d5-9f01f134b15e" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/messageformeservice/receiveNotification"/></con:request></con:config></con:testStep><con:testStep type="request" id="fe4cc253-6171-4795-b9ad-6947d8de24c2" name="testcase3 - Test - Worker2 - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MessageForMeServiceHTTPBinding</con:interface><con:operation>receiveNotification</con:operation><con:request name="testcase3 - Test - Worker2 - Request" id="6c8b80f7-0ed7-4825-800b-9c3bfba91363" outgoingWss="Outflow TEST"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.51:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:receiveNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:waitTimeSeconds>10</v1:waitTimeSeconds>
+            <v1:maxNumberOfNotifications>10</v1:maxNumberOfNotifications>
+            <v1:autoDelete>false</v1:autoDelete>
+         </v1:request>
+      </v1:receiveNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="c7767c01-a60a-425e-b3f9-62ceb4fa3162" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="56517777-c224-4657-9777-7b620b824222" name="SOAP Response"/><con:assertion type="Schema Compliance" id="0c75a739-9dcb-4fcb-b9e8-77d841790ebf" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/messageformeservice/receiveNotification"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="930e5e10-fcc6-4932-8c35-9ac2c6b1d398" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="deleteNotification" searchProperties="true"><con:settings/><con:testStep type="request" id="336fbe7f-719b-46d8-b365-420580b0fc77" name="testcase3 - Test - LB - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MessageForMeServiceHTTPBinding</con:interface><con:operation>deleteNotification</con:operation><con:request name="testcase3 - Test - LB - Request" id="fe3cbc30-2e76-4a04-8178-c4ce4e2a6bcb" outgoingWss="Outflow TEST"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://esb-security-gw.sta.srv.cirb.lan:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:deleteNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:notificationIds>
+               <!--1 to 50 repetitions:-->
+               <v1:notificationId>d99920ec-e73f-4ea3-89ee-4943ab152092</v1:notificationId>
+            </v1:notificationIds>
+         </v1:request>
+      </v1:deleteNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="2ed33a40-97cc-405d-969c-a05f17e00763" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="7fc6c0af-b95d-4ad7-bb0c-ce3f27101301" name="SOAP Response"/><con:assertion type="Schema Compliance" id="d5f9c7a1-1d01-4607-be1f-08ba14408df9" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/messageformeservice/deleteNotification"/></con:request></con:config></con:testStep><con:testStep type="request" id="9dcc9355-96f6-4517-9d61-dfcbb6003647" name="testcase3 - Test - Worker1 - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MessageForMeServiceHTTPBinding</con:interface><con:operation>deleteNotification</con:operation><con:request name="testcase3 - Test - Worker1 - Request" id="974c46d1-332d-443a-b48f-b608d626521f" outgoingWss="Outflow TEST"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.45:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:deleteNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:notificationIds>
+               <!--1 to 50 repetitions:-->
+               <v1:notificationId>d99920ec-e73f-4ea3-89ee-4943ab152092</v1:notificationId>
+            </v1:notificationIds>
+         </v1:request>
+      </v1:deleteNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="b6909961-d14c-4424-a33d-d930a2eb89cd" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="1c826d92-e979-4854-9f5f-54ad54cc9147" name="SOAP Response"/><con:assertion type="Schema Compliance" id="6af4dfb3-9bdb-45f1-96d1-644d7d381c75" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/messageformeservice/deleteNotification"/></con:request></con:config></con:testStep><con:testStep type="request" id="8ce97ebd-813a-47ce-b75b-a2c097c9b2ab" name="testcase3 - Test - Worker2 - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MessageForMeServiceHTTPBinding</con:interface><con:operation>deleteNotification</con:operation><con:request name="testcase3 - Test - Worker2 - Request" id="c4738776-e27a-4c92-8808-733ddc8687a4" outgoingWss="Outflow TEST"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.51:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:deleteNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:notificationIds>
+               <!--1 to 50 repetitions:-->
+               <v1:notificationId>d99920ec-e73f-4ea3-89ee-4943ab152092</v1:notificationId>
+            </v1:notificationIds>
+         </v1:request>
+      </v1:deleteNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="598c1d55-9f01-47c5-a20a-a635791a7e3f" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="3bbfc539-3956-484b-a15b-209816b58194" name="SOAP Response"/><con:assertion type="Schema Compliance" id="87507a63-5a22-4317-8008-59e9c966e6cc" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/messageformeservice/deleteNotification"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:testSuite id="07bf0dbe-f5cc-4cb1-8e1c-59bf223923be" name="STAG"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="38748f27-143c-44df-a46b-e01b7533213e" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="sendNotification" searchProperties="true"><con:settings/><con:testStep type="request" id="a94101a3-db3c-4faf-9a0d-bb92d4b09bfd" name="testcase4 - Staging - LB - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MessageForMeServiceHTTPBinding</con:interface><con:operation>sendNotification</con:operation><con:request name="testcase4 - Staging - LB - Request" id="76edb131-60a8-4142-99e6-5dd130ccd0cd" outgoingWss="Outflow STAG"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus-esb-sg.sta.srv.cirb.lan:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:sendNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:consumerId>FIDUS-TESTUSER</v1:consumerId>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:data><test>test</test></v1:data>
+         </v1:request>
+      </v1:sendNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="05e5bbf9-5ba3-408a-bf9d-9e1d4901638f" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="7b9c2649-2de8-4c88-85c1-860add5526b7" name="SOAP Response"/><con:assertion type="Schema Compliance" id="88a6e1b3-0f94-47c5-8cad-4b41384dc243" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/messageformeservice/sendNotification"/></con:request></con:config></con:testStep><con:testStep type="request" id="39a641d7-6788-4532-87d3-865011d09fb3" name="testcase4 - Staging - Worker1 - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MessageForMeServiceHTTPBinding</con:interface><con:operation>sendNotification</con:operation><con:request name="testcase4 - Staging - Worker1 - Request" id="aa9fabf6-ed0d-4e8f-bd7a-9908253292c4" outgoingWss="Outflow STAG"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.57:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:sendNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:consumerId>FIDUS-TESTUSER</v1:consumerId>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:data><test>test</test></v1:data>
+         </v1:request>
+      </v1:sendNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="2850bb1a-3994-4c8a-a2e5-bfa8fb6c94ce" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="643a0f5a-ac90-442f-aa90-d3e9eba77ca2" name="SOAP Response"/><con:assertion type="Schema Compliance" id="d33731bc-17e5-4068-8e77-4cb36b83ab31" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/messageformeservice/sendNotification"/></con:request></con:config></con:testStep><con:testStep type="request" id="d9432105-cafa-442e-9209-69f26663574e" name="testcase4 - Staging - Worker2 - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MessageForMeServiceHTTPBinding</con:interface><con:operation>sendNotification</con:operation><con:request name="testcase4 - Staging - Worker2 - Request" id="8221e8d9-af50-4c50-963b-7cb66c2c1978" outgoingWss="Outflow STAG"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.64:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:sendNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:consumerId>FIDUS-TESTUSER</v1:consumerId>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:data><test>test</test></v1:data>
+         </v1:request>
+      </v1:sendNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="00173b40-3032-4856-b6fe-e78dcd4c0456" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="860795f0-a538-4ffd-8578-9addf068e372" name="SOAP Response"/><con:assertion type="Schema Compliance" id="b222f53f-faab-43f7-9db1-750f6a9e6b7c" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/messageformeservice/sendNotification"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="f7d2baa3-a93b-48a8-80f0-528e46d5ce4d" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="receiveNotification" searchProperties="true"><con:settings/><con:testStep type="request" id="55ab1bfc-f1ed-4292-a6ec-412a5b679d23" name="testcase4 - Staging - LB - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MessageForMeServiceHTTPBinding</con:interface><con:operation>receiveNotification</con:operation><con:request name="testcase4 - Staging - LB - Request" id="6ef5cf5d-854a-4e96-a005-bd552f049bae" outgoingWss="Outflow STAG"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus-esb-sg.sta.srv.cirb.lan:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:receiveNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:waitTimeSeconds>10</v1:waitTimeSeconds>
+            <v1:maxNumberOfNotifications>10</v1:maxNumberOfNotifications>
+            <v1:autoDelete>false</v1:autoDelete>
+         </v1:request>
+      </v1:receiveNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="5e9c30f2-2e0f-4fc0-a006-552d8c5891d3" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="99159105-b441-49ba-a3e0-d639d44ba1b2" name="SOAP Response"/><con:assertion type="Schema Compliance" id="2142d5a7-1dc1-4af5-a03b-89d53833f6cc" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/messageformeservice/receiveNotification"/></con:request></con:config></con:testStep><con:testStep type="request" id="9dfb651e-7154-4183-9269-51808b34823e" name="testcase4 - Staging - Worker1 - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MessageForMeServiceHTTPBinding</con:interface><con:operation>receiveNotification</con:operation><con:request name="testcase4 - Staging - Worker1 - Request" id="9461b130-de30-4802-b448-a73e3f41e615" outgoingWss="Outflow STAG"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.57:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:receiveNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:waitTimeSeconds>10</v1:waitTimeSeconds>
+            <v1:maxNumberOfNotifications>10</v1:maxNumberOfNotifications>
+            <v1:autoDelete>false</v1:autoDelete>
+         </v1:request>
+      </v1:receiveNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="2212a03a-fce1-4056-8ac6-80139825ca7a" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="6cb209e7-5690-4c27-b1c5-746b323c9d26" name="SOAP Response"/><con:assertion type="Schema Compliance" id="ce40eec0-98ad-426d-8b66-aee64f12173e" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/messageformeservice/receiveNotification"/></con:request></con:config></con:testStep><con:testStep type="request" id="7a453001-231b-4f87-88e4-f8aee46598da" name="testcase4 - Staging - Worker2 - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MessageForMeServiceHTTPBinding</con:interface><con:operation>receiveNotification</con:operation><con:request name="testcase4 - Staging - Worker2 - Request" id="6a473b19-60a0-4a6a-9740-c66091531a54" outgoingWss="Outflow STAG"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.64:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:receiveNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:waitTimeSeconds>10</v1:waitTimeSeconds>
+            <v1:maxNumberOfNotifications>10</v1:maxNumberOfNotifications>
+            <v1:autoDelete>false</v1:autoDelete>
+         </v1:request>
+      </v1:receiveNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="c0c928ed-2918-4acb-99d5-301287cd356d" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="4ab8c3ab-cd9d-4082-a96e-9272c1896dc6" name="SOAP Response"/><con:assertion type="Schema Compliance" id="877415e6-c6ce-4008-b82a-b7bd81fcd310" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/messageformeservice/receiveNotification"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="bc4ff08a-d47c-4882-8bb5-18c53a035b7d" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="deleteNotification" searchProperties="true"><con:settings/><con:testStep type="request" id="a6f8ba3f-35e8-4b68-8569-14804de5fc4c" name="testcase4 - Staging - LB - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MessageForMeServiceHTTPBinding</con:interface><con:operation>deleteNotification</con:operation><con:request name="testcase4 - Staging - LB - Request" id="b1a374bf-c777-4400-baba-743956681761" outgoingWss="Outflow STAG"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus-esb-sg.sta.srv.cirb.lan:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:deleteNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:notificationIds>
+               <!--1 to 50 repetitions:-->
+               <v1:notificationId>d99920ec-e73f-4ea3-89ee-4943ab152092</v1:notificationId>
+            </v1:notificationIds>
+         </v1:request>
+      </v1:deleteNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="8849cab8-5e3f-4692-86a1-5b0a2c0845b7" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="3bdf8101-1f19-4806-a354-10cbbb38dc6b" name="SOAP Response"/><con:assertion type="Schema Compliance" id="cf1f6e1a-e627-4639-9339-05b05661279d" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/messageformeservice/deleteNotification"/></con:request></con:config></con:testStep><con:testStep type="request" id="0592274f-b37b-4243-aef6-fc589b59672a" name="testcase4 - Staging - Worker1 - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MessageForMeServiceHTTPBinding</con:interface><con:operation>deleteNotification</con:operation><con:request name="testcase4 - Staging - Worker1 - Request" id="f59d34ea-09ee-42b6-bb93-a81bc532a933" outgoingWss="Outflow STAG"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.57:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:deleteNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:notificationIds>
+               <!--1 to 50 repetitions:-->
+               <v1:notificationId>d99920ec-e73f-4ea3-89ee-4943ab152092</v1:notificationId>
+            </v1:notificationIds>
+         </v1:request>
+      </v1:deleteNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="1db7b70a-1558-40ed-9815-967c8c3614c0" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="d7a9d988-77a3-45b4-93b5-48f39776cce3" name="SOAP Response"/><con:assertion type="Schema Compliance" id="cce30e02-059d-4fff-a121-fd9b59785f78" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/messageformeservice/deleteNotification"/></con:request></con:config></con:testStep><con:testStep type="request" id="4357305a-aa05-4b92-a6be-7573bf7534d4" name="testcase4 - Staging - Worker2 - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MessageForMeServiceHTTPBinding</con:interface><con:operation>deleteNotification</con:operation><con:request name="testcase4 - Staging - Worker2 - Request" id="e109dfe7-8a1e-4da1-b835-ee62de8b7d34" outgoingWss="Outflow STAG"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.24.64:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:deleteNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:notificationIds>
+               <!--1 to 50 repetitions:-->
+               <v1:notificationId>d99920ec-e73f-4ea3-89ee-4943ab152092</v1:notificationId>
+            </v1:notificationIds>
+         </v1:request>
+      </v1:deleteNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="cb630af0-053f-4918-835a-9f6fb856828a" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="23153a71-1b03-433a-b332-3d836b0fbf0c" name="SOAP Response"/><con:assertion type="Schema Compliance" id="7a8db4fd-4ee4-4adf-ac1d-61f658474424" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/messageformeservice/deleteNotification"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:testSuite id="975c2374-23cd-4009-bdea-664faf582cbb" name="DEV"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="4223d943-4a8f-479d-8186-0b96a909b9a5" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="sendNotification" searchProperties="true"><con:settings/><con:testStep type="request" id="189af8c6-0833-4a54-b37e-56a73ce5f387" name="testcase2 - Dev - Request - OK"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MessageForMeServiceHTTPBinding</con:interface><con:operation>sendNotification</con:operation><con:request name="testcase2 - Dev - Request - OK" id="35c2994d-13d8-4c1c-bc44-ac196680adb2" outgoingWss="Outflow DEV"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.36.61:8243/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:sendNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:consumerId>CIRB-CIBG</v1:consumerId>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:data>one data</v1:data>
+         </v1:request>
+      </v1:sendNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="717591b5-7622-42bf-9938-3a0bce57a682" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="274e6fc5-0cef-401c-bf5e-de560a829868" name="SOAP Response"/><con:assertion type="Schema Compliance" id="332871da-cad5-4ac2-b951-586f35dc3cb2" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/messageformeservice/sendNotification"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="12248ead-0feb-42c7-8c7d-1f634c3afecc" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="receiveNotification" searchProperties="true"><con:settings/><con:testStep type="request" id="0fcc211e-ce9a-43b7-9b15-d503af474ae3" name="testcase2 - Dev - Request - OK"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MessageForMeServiceHTTPBinding</con:interface><con:operation>receiveNotification</con:operation><con:request name="testcase2 - Dev - Request - OK" id="fa22839b-e3f6-4d91-a8f7-10d515c376e4" outgoingWss="Outflow DEV"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.36.61:8243/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:receiveNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:waitTimeSeconds>10</v1:waitTimeSeconds>
+            <v1:maxNumberOfNotifications>10</v1:maxNumberOfNotifications>
+            <v1:autoDelete>false</v1:autoDelete>
+         </v1:request>
+      </v1:receiveNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="53869655-8657-4911-963a-468ee11d8b57" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="5a1c3552-069b-4657-8ac1-30867e8f9b6e" name="SOAP Response"/><con:assertion type="Schema Compliance" id="1620b8b6-f13f-446d-b394-de069215e23d" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/messageformeservice/receiveNotification"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="4ebe6761-75f4-415d-a09a-f5d1f1ec1544" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="deleteNotification" searchProperties="true"><con:settings/><con:testStep type="request" id="40137fb8-bd50-4da3-aa74-4f2524a3cb39" name="testcase2 - Dev - Request - OK"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MessageForMeServiceHTTPBinding</con:interface><con:operation>deleteNotification</con:operation><con:request name="testcase2 - Dev - Request - OK" id="3e728e01-779b-4f59-8b12-ef7db9347a45" outgoingWss="Outflow DEV"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.36.61:8243/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:deleteNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:notificationIds>
+               <!--1 to 50 repetitions:-->
+               <v1:notificationId>d99920ec-e73f-4ea3-89ee-4943ab152092</v1:notificationId>
+            </v1:notificationIds>
+         </v1:request>
+      </v1:deleteNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="d649f39a-7883-45f8-9a80-a6126a8f74e5" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="bc22a592-04ea-492e-ae7e-a85adf0b35b9" name="SOAP Response"/><con:assertion type="Schema Compliance" id="cf8465d4-e063-4e46-a74c-612d86e880d8" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/messageformeservice/deleteNotification"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:testSuite id="400fece0-420b-42a2-af83-ddc5457333a2" name="PROD"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="912fe642-5f2d-4ea4-9524-ac3dc3269392" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="sendNotification" searchProperties="true"><con:settings/><con:testStep type="request" id="96c70b83-b3a1-474a-a776-68bb562f14ac" name="testcase5 - Prod - External - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MessageForMeServiceHTTPBinding</con:interface><con:operation>sendNotification</con:operation><con:request name="testcase5 - Prod - External - Request" id="d2649384-ea33-48ea-8a8b-a77a5f78fe90" outgoingWss="Outflow PROD"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus.sec.brussels/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:sendNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:consumerId>FIDUS-TESTUSER</v1:consumerId>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:data><test>test</test></v1:data>
+         </v1:request>
+      </v1:sendNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="c37e31fa-417d-48d6-a524-32698917824b" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="45bc0dac-d42b-4a8c-ad41-0e88e9715705" name="SOAP Response"/><con:assertion type="Schema Compliance" id="8cb6c7d3-9b8a-47bd-841f-631606742f3c" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/messageformeservice/sendNotification"/></con:request></con:config></con:testStep><con:testStep type="request" id="78b2d55f-7b2e-4406-bb6d-25b1fc72d60e" name="testcase5 - Prod - LB - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MessageForMeServiceHTTPBinding</con:interface><con:operation>sendNotification</con:operation><con:request name="testcase5 - Prod - LB - Request" id="003a2bab-91d9-4ae0-bc76-6e3e4ee847b3" outgoingWss="Outflow PROD"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus-esb-sg.prd.srv.cirb.lan:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:sendNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:consumerId>FIDUS-TESTUSER</v1:consumerId>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:data><test>test</test></v1:data>
+         </v1:request>
+      </v1:sendNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="7bc2311a-2af0-487b-9fae-46dc1d8aa76a" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="46fded65-49ec-4cf8-8d83-e3758b9cf0b1" name="SOAP Response"/><con:assertion type="Schema Compliance" id="e1603335-0b5a-49fa-98af-5ab87021a9d2" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/messageformeservice/sendNotification"/></con:request></con:config></con:testStep><con:testStep type="request" id="71e3efc7-be80-4cef-bc21-f0502ff0e026" name="testcase5 - Prod - Worker1 - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MessageForMeServiceHTTPBinding</con:interface><con:operation>sendNotification</con:operation><con:request name="testcase5 - Prod - Worker1 - Request" id="7922794a-96f4-42a1-a500-23e8cd7c6790" outgoingWss="Outflow PROD"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.26.22:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:sendNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:consumerId>FIDUS-TESTUSER</v1:consumerId>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:data><test>test</test></v1:data>
+         </v1:request>
+      </v1:sendNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="4a162b05-c708-40ec-9f5d-af9b65057b33" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="c226a1bd-17cb-4475-b401-fe467ff5befc" name="SOAP Response"/><con:assertion type="Schema Compliance" id="7ae324d1-f2e0-42d5-a6a6-e43a78f0acf1" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/messageformeservice/sendNotification"/></con:request></con:config></con:testStep><con:testStep type="request" id="ac2028bc-2e22-4f31-bc40-e1dded4b1e1d" name="testcase5 - Prod - Worker2 - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MessageForMeServiceHTTPBinding</con:interface><con:operation>sendNotification</con:operation><con:request name="testcase5 - Prod - Worker2 - Request" id="852f3f7a-500b-4c89-aa49-63673da4ed8b" outgoingWss="Outflow PROD"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.26.19:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:sendNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:consumerId>FIDUS-TESTUSER</v1:consumerId>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:data><test>test</test></v1:data>
+         </v1:request>
+      </v1:sendNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="e2d9dc7f-b6f9-4849-b0ba-378406aa1488" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="825f9bdb-f1e7-4479-a0cf-0c91850218dc" name="SOAP Response"/><con:assertion type="Schema Compliance" id="183e1c89-585b-4462-8bb4-8d8f4a9b766f" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/messageformeservice/sendNotification"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="f6706264-7d4d-445b-96d9-dc07bc5f5fc7" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="receiveNotification" searchProperties="true"><con:settings/><con:testStep type="request" id="8d87c032-b38b-4bb1-bc16-71057ba6dde3" name="testcase5 - Prod - External - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MessageForMeServiceHTTPBinding</con:interface><con:operation>receiveNotification</con:operation><con:request name="testcase5 - Prod - External - Request" id="bb308581-13c2-4f98-9a52-de91d45863c0" outgoingWss="Outflow PROD"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus.sec.brussels/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:receiveNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:waitTimeSeconds>10</v1:waitTimeSeconds>
+            <v1:maxNumberOfNotifications>10</v1:maxNumberOfNotifications>
+            <v1:autoDelete>false</v1:autoDelete>
+         </v1:request>
+      </v1:receiveNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="f5bb02f9-de55-4ecb-8114-fb0cf0a96995" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="54da3548-0f47-4fcc-8c3a-5d5976a55744" name="SOAP Response"/><con:assertion type="Schema Compliance" id="daee949d-c33d-46bb-90e0-85813f696741" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/messageformeservice/receiveNotification"/></con:request></con:config></con:testStep><con:testStep type="request" id="1d721d15-d074-476b-9045-835d65a2ee50" name="testcase5 - Prod - LB - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MessageForMeServiceHTTPBinding</con:interface><con:operation>receiveNotification</con:operation><con:request name="testcase5 - Prod - LB - Request" id="94c488c6-8b38-4d79-9eb4-521b3626940f" outgoingWss="Outflow PROD"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus-esb-sg.prd.srv.cirb.lan:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:receiveNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:waitTimeSeconds>10</v1:waitTimeSeconds>
+            <v1:maxNumberOfNotifications>10</v1:maxNumberOfNotifications>
+            <v1:autoDelete>false</v1:autoDelete>
+         </v1:request>
+      </v1:receiveNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="8df47498-8ecb-429e-9210-ecf04ff0c72c" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="b0225f0f-55c8-4f12-a1fb-5b5e813c1a3d" name="SOAP Response"/><con:assertion type="Schema Compliance" id="cf3bf0f9-abc7-42e8-a7ad-e32f98cdbe98" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/messageformeservice/receiveNotification"/></con:request></con:config></con:testStep><con:testStep type="request" id="971142f9-e420-4ecd-a355-73e9e424d188" name="testcase5 - Prod - Worker1 - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MessageForMeServiceHTTPBinding</con:interface><con:operation>receiveNotification</con:operation><con:request name="testcase5 - Prod - Worker1 - Request" id="5f633c4f-82b2-4ab6-811e-2b0c1805822e" outgoingWss="Outflow PROD"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.26.22:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:receiveNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:waitTimeSeconds>10</v1:waitTimeSeconds>
+            <v1:maxNumberOfNotifications>10</v1:maxNumberOfNotifications>
+            <v1:autoDelete>false</v1:autoDelete>
+         </v1:request>
+      </v1:receiveNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="1187dd08-e1e7-453b-8cf4-ec2872a61ecb" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="9b2e4f24-564c-4834-8418-a0555d5ba0b7" name="SOAP Response"/><con:assertion type="Schema Compliance" id="adebb345-58c2-449f-95a4-d3fd9f071300" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/messageformeservice/receiveNotification"/></con:request></con:config></con:testStep><con:testStep type="request" id="14de4406-9e7a-4793-bc6f-58b963c407a5" name="testcase5 - Prod - Worker2 - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MessageForMeServiceHTTPBinding</con:interface><con:operation>receiveNotification</con:operation><con:request name="testcase5 - Prod - Worker2 - Request" id="b2150cc6-30a8-4df2-a925-ffbe68456a09" outgoingWss="Outflow PROD"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.26.19:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:receiveNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:waitTimeSeconds>10</v1:waitTimeSeconds>
+            <v1:maxNumberOfNotifications>10</v1:maxNumberOfNotifications>
+            <v1:autoDelete>false</v1:autoDelete>
+         </v1:request>
+      </v1:receiveNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="909ab11f-4b9f-493b-9703-d072e6aa9d08" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="ca2914d2-6df5-43fe-b3c5-9ba75299955d" name="SOAP Response"/><con:assertion type="Schema Compliance" id="d37bccc9-d928-4105-9c66-9d264f309cd2" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/messageformeservice/receiveNotification"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="fdc85101-a7c1-4f87-8747-378793c7e292" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="deleteNotification" searchProperties="true"><con:settings/><con:testStep type="request" id="61b6540f-3e6b-4a17-bf2b-0979133c0285" name="testcase5 - Prod - External - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MessageForMeServiceHTTPBinding</con:interface><con:operation>deleteNotification</con:operation><con:request name="testcase5 - Prod - External - Request" id="8c6f4773-9e34-47ad-ba75-cd966cadaecf" outgoingWss="Outflow PROD"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus.sec.brussels/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:deleteNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:notificationIds>
+               <!--1 to 50 repetitions:-->
+               <v1:notificationId>d99920ec-e73f-4ea3-89ee-4943ab152092</v1:notificationId>
+            </v1:notificationIds>
+         </v1:request>
+      </v1:deleteNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="e360d015-fa6b-46fb-a224-bf735149b62c" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="73224bb8-674f-4e3b-92b7-34aea9c10dc2" name="SOAP Response"/><con:assertion type="Schema Compliance" id="4b3fdabe-f665-49c1-9b81-6c9c3b1659ed" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/messageformeservice/deleteNotification"/></con:request></con:config></con:testStep><con:testStep type="request" id="25a8f693-6fd8-4dab-ab3e-c049188d757e" name="testcase5 - Prod - LB - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MessageForMeServiceHTTPBinding</con:interface><con:operation>deleteNotification</con:operation><con:request name="testcase5 - Prod - LB - Request" id="6458bed7-8b76-4abf-bcb9-d44fae69da01" outgoingWss="Outflow PROD"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://fidus-esb-sg.prd.srv.cirb.lan:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:deleteNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:notificationIds>
+               <!--1 to 50 repetitions:-->
+               <v1:notificationId>d99920ec-e73f-4ea3-89ee-4943ab152092</v1:notificationId>
+            </v1:notificationIds>
+         </v1:request>
+      </v1:deleteNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="edd88d50-83a0-40c1-b61b-33264794a7cc" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="f21bcf4f-6bac-433e-baaf-dbad3def4efd" name="SOAP Response"/><con:assertion type="Schema Compliance" id="8cd88726-d758-4507-8c98-e4d61f644a32" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/messageformeservice/deleteNotification"/></con:request></con:config></con:testStep><con:testStep type="request" id="bb6e5d58-1f3c-41e7-904e-c7bd42692b7d" name="testcase5 - Prod - Worker1 - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MessageForMeServiceHTTPBinding</con:interface><con:operation>deleteNotification</con:operation><con:request name="testcase5 - Prod - Worker1 - Request" id="bddb311f-c236-4deb-ae7e-6115eebd8d19" outgoingWss="Outflow PROD"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.26.22:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:deleteNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:notificationIds>
+               <!--1 to 50 repetitions:-->
+               <v1:notificationId>d99920ec-e73f-4ea3-89ee-4943ab152092</v1:notificationId>
+            </v1:notificationIds>
+         </v1:request>
+      </v1:deleteNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="05b52f3e-e3a2-4fcb-b4eb-1c4a34dad958" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="a6b9c5d9-4350-45d0-9dac-93f470e46e91" name="SOAP Response"/><con:assertion type="Schema Compliance" id="1539603e-9064-4b7c-8b0c-309eaddd0286" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/messageformeservice/deleteNotification"/></con:request></con:config></con:testStep><con:testStep type="request" id="542e7ce3-5f5e-42bb-bf0f-13237e7a972b" name="testcase5 - Prod - Worker2 - Request"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>MessageForMeServiceHTTPBinding</con:interface><con:operation>deleteNotification</con:operation><con:request name="testcase5 - Prod - Worker2 - Request" id="b24bc82d-b495-4498-9d3b-b2872f7922eb" outgoingWss="Outflow PROD"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>https://192.168.26.19:8443/services/MessageForMeService_v1.0</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:v1="http://fidus.brussels/service/messageformeservice/messages/v1" xmlns:v11="http://fidus.brussels/type/common/messages/v1">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <v1:deleteNotificationRequest>
+         <v1:messageContext>
+            <v11:messageId>${=import static java.util.UUID.randomUUID; uuid = randomUUID() as String}</v11:messageId>
+         </v1:messageContext>
+         <v1:legalContext>ServiceIntegrator</v1:legalContext>
+         <v1:request>
+            <v1:topicId>PersonService</v1:topicId>
+            <v1:notificationIds>
+               <!--1 to 50 repetitions:-->
+               <v1:notificationId>d99920ec-e73f-4ea3-89ee-4943ab152092</v1:notificationId>
+            </v1:notificationIds>
+         </v1:request>
+      </v1:deleteNotificationRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Fault Assertion" id="2bc96c95-5228-4645-bd43-63496db9bd80" name="Not SOAP Fault"/><con:assertion type="SOAP Response" id="fe927344-dc4a-4637-b9a1-c8432a49206c" name="SOAP Response"/><con:assertion type="Schema Compliance" id="a6548fba-9b12-4654-824e-36919f14efd7" name="Schema Compliance"><con:configuration/></con:assertion><con:wsaConfig action="http://fidus.brussels/services/messageformeservice/deleteNotification"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer><con:crypto><con:source>data/wso2/keystores/user-rajarshi.jks</con:source><con:password>test@fidus01</con:password><con:type>KEYSTORE</con:type></con:crypto><con:outgoing><con:name>Outflow TEST</con:name><con:entry type="Signature" username="testuser-test.fidus.brussels" password="test@fidus01"><con:configuration><crypto>user-rajarshi.jks</crypto><keyIdentifierType>3</keyIdentifierType><signatureAlgorithm/><signatureCanonicalization/><useSingleCert>true</useSingleCert><digestAlgorithm/><customTokenValueType/><customTokenId/></con:configuration></con:entry><con:entry type="Timestamp"><con:configuration><timeToLive>300000</timeToLive><strictTimestamp>true</strictTimestamp></con:configuration></con:entry></con:outgoing><con:outgoing><con:name>Outflow STAG</con:name></con:outgoing><con:outgoing><con:name>Outflow DEV</con:name></con:outgoing><con:outgoing><con:name>Outflow PROD</con:name></con:outgoing></con:wssContainer><con:oAuth2ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
